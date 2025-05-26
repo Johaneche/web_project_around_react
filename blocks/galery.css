@@ -33,11 +33,10 @@
 
 .galery__text {
   color: #000;
-  font-family: "Inter-Regular" sans-serif;
+  font-family: "Inter-Regular", sans-serif;
   font-size: 24px;
   font-weight: 900;
   line-height: 100%;
-  letter-spacing: 0%;
 
   text-overflow: ellipsis;
   overflow: hidden;
@@ -51,7 +50,7 @@
   .galery {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(auto, 1fr);
+    /* grid-template-rows: repeat(auto, 1fr); */
     margin: auto;
     padding: 0px 20px;
   }
@@ -61,7 +60,7 @@
   .galery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(auto, 1fr);
+    /* grid-template-rows: repeat(auto, 1fr); */
     margin: auto;
     padding: 0px 20px;
   }
