@@ -39,6 +39,12 @@
   align-items: end;
 }
 
+.main__botton_edit:hover {
+  border: 1px solid #ffffff;
+  opacity: 60%;
+  cursor: pointer;
+}
+
 .main__paragraph_occupation {
   margin: 0px;
 
@@ -60,6 +66,12 @@
   max-width: 150px;
   max-height: 50px;
   padding: 0px;
+}
+
+.main__botton_add:hover {
+  border: 2px solid #ffffff;
+  opacity: 60%;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 320px) and (max-width: 550px) {

@@ -39,9 +39,9 @@
 
           <div class="main__content-paragraph">
             <h1 class="main__paragraph main__paragraph_name">
-              Jacques Cousteau
+              Johan Echeverry
             </h1>
-            <button class="main__botton main__botton_edit">
+            <button class="main__botton main__botton_edit" onclick="">
               <img
                 class="main__botton-img"
                 src="./images/edit-button.svg"
@@ -60,105 +60,136 @@
           <div class="galery__card">
             <img
               class="galery__img"
-              src="./images/img1.png"
+              src="./images/img1-central-park (2).jpg"
               alt="Debe carga la imgagen de la tarjeta"
             />
             <div class="galery__content">
-              <h2 class="galery__text">Valle de Yosemite</h2>
-              <img
-                class="galery__like"
-                src="./images/img-like.svg"
-                alt="Debe cargar el corzaon del like"
-              />
+              <h2 class="galery__text">Central Park, NYC</h2>
+              <button class="galery__buttom galery__buttom_like">
+                <img
+                  class="galery__like"
+                  src="./images/img-like.svg"
+                  alt="Debe cargar el corzaon del like"
+                />
+              </button>
             </div>
           </div>
 
-          <!-- Tarjeta 2 -->
+          <!-- Tarjeta 2 Bear Mountain -->
           <div class="galery__card">
             <img
               class="galery__img"
-              src="./images/img1.png"
+              src="./images/img1-bear-mountain.png"
               alt="Debe carga la imgagen de la tarjeta"
             />
             <div class="galery__content">
-              <h2 class="galery__text">Yumbo</h2>
-              <img
-                class="galery__like"
-                src="./images/img-like.svg"
-                alt="Debe cargar el corzaon del like"
-              />
+              <h2 class="galery__text">Bear Mountain</h2>
+              <button class="galery__buttom galery__buttom_like">
+                <img
+                  class="galery__like"
+                  src="./images/img-like.svg"
+                  alt="Debe cargar el corzaon del like"
+                />
+              </button>
             </div>
           </div>
 
-          <!-- Tarjeta 3 -->
+          <!-- Tarjeta 3 Hoboken -->
           <div class="galery__card">
             <img
               class="galery__img"
-              src="./images/img1.png"
+              src="./images/img2-hoboken.png"
               alt="Debe carga la imgagen de la tarjeta"
             />
             <div class="galery__content">
-              <h2 class="galery__text">Cali</h2>
-              <img
-                class="galery__like"
-                src="./images/img-like.svg"
-                alt="Debe cargar el corzaon del like"
-              />
+              <h2 class="galery__text">Liberty State Park, Hoboken</h2>
+              <button class="galery__buttom galery__buttom_like">
+                <img
+                  class="galery__like"
+                  src="./images/img-like.svg"
+                  alt="Debe cargar el corzaon del like"
+                />
+              </button>
             </div>
           </div>
 
-          <!-- Tarjeta 4 -->
+          <!-- Tarjeta 4 Manhattan -->
           <div class="galery__card">
             <img
               class="galery__img"
-              src="./images/img1.png"
+              src="./images/img3-manhathan.png"
               alt="Debe carga la imgagen de la tarjeta"
             />
             <div class="galery__content">
-              <h2 class="galery__text">Tarjeta 4</h2>
-              <img
-                class="galery__like"
-                src="./images/img-like.svg"
-                alt="Debe cargar el corzaon del like"
-              />
+              <h2 class="galery__text">Manhattan</h2>
+              <button class="galery__buttom galery__buttom_like">
+                <img
+                  class="galery__like"
+                  src="./images/img-like.svg"
+                  alt="Debe cargar el corzaon del like"
+                />
+              </button>
             </div>
           </div>
 
-          <!-- Tarjeta 5 -->
+          <!-- Tarjeta 5 Times Square -->
           <div class="galery__card">
             <img
               class="galery__img"
-              src="./images/img1.png"
+              src="./images/img4-timesquare.png"
               alt="Debe carga la imgagen de la tarjeta"
             />
             <div class="galery__content">
-              <h2 class="galery__text">Tarjeta 5</h2>
-              <img
-                class="galery__like"
-                src="./images/img-like.svg"
-                alt="Debe cargar el corzaon del like"
-              />
+              <h2 class="galery__text">Times Square</h2>
+              <button class="galery__buttom galery__buttom_like">
+                <img
+                  class="galery__like"
+                  src="./images/img-like.svg"
+                  alt="Debe cargar el corzaon del like"
+                />
+              </button>
             </div>
           </div>
 
-          <!-- Tarjeta 6 -->
+          <!-- Tarjeta 6 Vessel -->
           <div class="galery__card">
             <img
               class="galery__img"
-              src="./images/img1.png"
+              src="./images/img5-vessel.png"
               alt="Debe carga la imgagen de la tarjeta"
             />
             <div class="galery__content">
-              <h2 class="galery__text">Tarjeta de Carta Numero 6</h2>
-              <img
-                class="galery__like"
-                src="./images/img-like.svg"
-                alt="Debe cargar el corzaon del like"
-              />
+              <h2 class="galery__text">Vessel</h2>
+              <button class="galery__buttom galery__buttom_like">
+                <img
+                  class="galery__like"
+                  src="./images/img-like.svg"
+                  alt="Debe cargar el corzaon del like"
+                />
+              </button>
             </div>
           </div>
         </section>
       </main>
+
+      <div class="popup">
+        <div class="popup__container">
+          <button class="popup__buttom popup__buttom_close"></button>
+          <div class="popup__form">
+            <h2 class="popup__title"></h2>
+            <input class="popup__input popup__input_name" type="text" />
+            <input class="popup__input popup__input_occupation" type="text" />
+            <button class="popup__buttom popup__buttom_save"></button>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p class="footer__author">© 2025 Around The U.S.</p>
+      </footer>
     </div>
+
+    <!-- Enlazamos el JS al HTML -->
+    <script src="./pages/script.js"></script>
   </body>
 </html>
