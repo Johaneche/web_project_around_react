@@ -82,6 +82,10 @@
     margin: 36px 20px;
   }
 
+  .main__img-profile {
+    align-self: center;
+  }
+
   .main__content-paragraph {
     margin: 0;
   }

@@ -60,14 +60,7 @@
 
 @media screen and (min-width: 320px) and (max-width: 550px) {
   .galery {
-    /*
-    max-width: 400px;
-
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    */
+    /* display: flex;      flex-direction: column;     flex-wrap: wrap;     align-items: center; */
 
     display: grid;
     justify-content: center;
@@ -81,11 +74,11 @@
   .galery__card {
     max-width: 290px;
     width: 100%;
-    /* height: 290px; */
   }
 
   .galery__img {
-    width: 290px;
+    max-width: 290px;
+    width: 100%;
     height: 290px;
 
     border-top-left-radius: 10px;
