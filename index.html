@@ -41,9 +41,9 @@
             <h1 class="main__paragraph main__paragraph_name">
               Johan Echeverry
             </h1>
-            <button class="main__botton main__botton_edit" onclick="">
+            <button class="main__button main__button_edit">
               <img
-                class="main__botton-img"
+                class="main__button-img"
                 src="./images/edit-button.svg"
                 alt="Cargar la imagen del boton editar"
               />
@@ -52,7 +52,7 @@
               Explorador
             </h2>
           </div>
-          <button class="main__botton main__botton_add">+</button>
+          <button class="main__button main__button_add">+</button>
         </section>
 
         <section class="galery">
@@ -65,7 +65,7 @@
             />
             <div class="galery__content">
               <h2 class="galery__text">Central Park, NYC</h2>
-              <button class="galery__buttom galery__buttom_like">
+              <button class="galery__button galery__button_like">
                 <img
                   class="galery__like"
                   src="./images/img-like.svg"
@@ -84,7 +84,7 @@
             />
             <div class="galery__content">
               <h2 class="galery__text">Bear Mountain</h2>
-              <button class="galery__buttom galery__buttom_like">
+              <button class="galery__button galery__button_like">
                 <img
                   class="galery__like"
                   src="./images/img-like.svg"
@@ -103,7 +103,7 @@
             />
             <div class="galery__content">
               <h2 class="galery__text">Liberty State Park, Hoboken</h2>
-              <button class="galery__buttom galery__buttom_like">
+              <button class="galery__button galery__button_like">
                 <img
                   class="galery__like"
                   src="./images/img-like.svg"
@@ -122,7 +122,7 @@
             />
             <div class="galery__content">
               <h2 class="galery__text">Manhattan</h2>
-              <button class="galery__buttom galery__buttom_like">
+              <button class="galery__button galery__button_like">
                 <img
                   class="galery__like"
                   src="./images/img-like.svg"
@@ -141,7 +141,7 @@
             />
             <div class="galery__content">
               <h2 class="galery__text">Times Square</h2>
-              <button class="galery__buttom galery__buttom_like">
+              <button class="galery__button galery__button_like">
                 <img
                   class="galery__like"
                   src="./images/img-like.svg"
@@ -160,7 +160,7 @@
             />
             <div class="galery__content">
               <h2 class="galery__text">Vessel</h2>
-              <button class="galery__buttom galery__buttom_like">
+              <button class="galery__button galery__button_like">
                 <img
                   class="galery__like"
                   src="./images/img-like.svg"
@@ -172,21 +172,29 @@
         </section>
       </main>
 
-      <div class="popup">
-        <div class="popup__container">
-          <button class="popup__buttom popup__buttom_close"></button>
-          <div class="popup__form">
-            <h2 class="popup__title"></h2>
-            <input class="popup__input popup__input_name" type="text" />
-            <input class="popup__input popup__input_occupation" type="text" />
-            <button class="popup__buttom popup__buttom_save"></button>
-          </div>
-        </div>
-      </div>
-
       <footer class="footer">
         <p class="footer__author">© 2025 Around The U.S.</p>
       </footer>
+    </div>
+
+    <div class="popup">
+      <div class="popup__container">
+        <button class="popup__button popup__button_close">×</button>
+        <div class="popup__form">
+          <h2 class="popup__title">Editar Perfil</h2>
+          <input
+            class="popup__input popup__input_name"
+            type="text"
+            placeholder="Johan Echeverry"
+          />
+          <input
+            class="popup__input popup__input_occupation"
+            type="text"
+            placeholder="Explorador"
+          />
+          <button class="popup__button popup__button_save">Guardar</button>
+        </div>
+      </div>
     </div>
 
     <!-- Enlazamos el JS al HTML -->

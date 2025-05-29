@@ -30,7 +30,7 @@
   line-height: 48px;
 }
 
-.main__botton_edit {
+.main__button_edit {
   border: 1px solid #545454;
   background-color: #000000;
   max-width: 24px;
@@ -39,7 +39,7 @@
   align-items: end;
 }
 
-.main__botton_edit:hover {
+.main__button_edit:hover {
   border: 1px solid #ffffff;
   opacity: 60%;
   cursor: pointer;
@@ -56,7 +56,7 @@
   font-weight: 400;
 }
 
-.main__botton_add {
+.main__button_add {
   font-size: 22px;
   border: 1px solid #545454;
   background-color: #000000;
@@ -68,7 +68,7 @@
   padding: 0px;
 }
 
-.main__botton_add:hover {
+.main__button_add:hover {
   border: 2px solid #ffffff;
   opacity: 60%;
   cursor: pointer;
@@ -102,7 +102,7 @@
     font-weight: 400;
   }
 
-  .main__botton_add {
+  .main__button_add {
     width: 100%;
     max-width: 550px;
   }
@@ -114,6 +114,7 @@
   }
   .main__content-paragraph {
     margin: 0;
+    grid-template-rows: repeat(2, auto);
   }
   .main__paragraph_name {
     padding: 0;
