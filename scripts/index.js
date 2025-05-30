@@ -16,8 +16,8 @@ let inOccupation = document.querySelector(".popup__input_occupation");
 function editWindow() {
   popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
 
-  inName.value = nameDefault.textContent; // Me aparezca el nombre del perfil a modificar
-  inOccupation.value = occupationDefault.textContent; // Me aparezca la ocupacion del perfil a modificar
+  inName.value = nameDefault.textContent.trim(); // Me aparezca el nombre del perfil a modificar
+  inOccupation.value = occupationDefault.textContent.trim(); // Me aparezca la ocupacion del perfil a modificar
 }
 
 // Cerrar la ventana de Editar
