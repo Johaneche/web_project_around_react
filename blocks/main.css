@@ -74,7 +74,7 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 320px) and (max-width: 550px) {
+@media screen and (max-width: 605px) {
   .main {
     max-width: 550px;
     display: flex;
@@ -112,7 +112,7 @@
   }
 }
 
-@media screen and (min-width: 551px) and (max-width: 880px) {
+@media screen and (min-width: 606px) and (max-width: 880px) {
   .main {
     margin: 20px;
   }
