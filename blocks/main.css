@@ -10,6 +10,7 @@
 .main__img-profile {
   max-width: 120px;
   max-height: 120px;
+  border-radius: 50%;
 }
 
 .main__content-paragraph {
