@@ -1,3 +1,31 @@
+//Las 6 Tarjetas Iniciales
+const initialCards = [
+  {
+    name: "Central Park, NYC",
+    link: "./images/img1-central-park (2).jpg",
+  },
+  {
+    name: "Bear Mountain, NY",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
+  },
+  {
+    name: "Liberty State Park, NJ",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
+  },
+  {
+    name: "Manhattan, NY",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
+  },
+  {
+    name: "Times Square, NY",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
+  },
+  {
+    name: "Vessel, NY",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
+  },
+];
+
 // Agregando las Clases a utilizar
 let popUp = document.querySelector(".popup");
 let nameDefault = document.querySelector(".main__paragraph_name");
@@ -34,3 +62,5 @@ function saveInfo() {
 btnEdit.addEventListener("click", editWindow);
 btnCloseWindow.addEventListener("click", closeWindow);
 btnSave.addEventListener("click", saveInfo);
+
+//
