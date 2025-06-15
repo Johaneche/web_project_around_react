@@ -6,11 +6,11 @@ const initialCards = [
   },
   {
     name: "Bear Mountain, NY",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
+    link: "./images/img1-bear-mountain.png",
   },
   {
     name: "Liberty State Park, NJ",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
+    link: "./images/img2-hoboken.png",
   },
   {
     name: "Manhattan, NY",
@@ -18,11 +18,11 @@ const initialCards = [
   },
   {
     name: "Times Square, NY",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
+    link: "./images/img4-timesquare.png",
   },
   {
     name: "Vessel, NY",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
+    link: "./images/img5-vessel.png",
   },
 ];
 
@@ -62,5 +62,3 @@ function saveInfo() {
 btnEdit.addEventListener("click", editWindow);
 btnCloseWindow.addEventListener("click", closeWindow);
 btnSave.addEventListener("click", saveInfo);
-
-//

@@ -90,6 +90,29 @@
   text-align: center;
 }
 
+.popup__form-content {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  row-gap: 20px;
+}
+
+.popup__button_add {
+  cursor: pointer;
+
+  height: 50px;
+
+  background: #000000;
+  border-radius: 5px;
+
+  color: #fff;
+  font-family: "Inter-Regular", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  text-align: center;
+}
+
 @media screen and (max-width: 605px) {
   .popup__container {
     max-width: 280px;

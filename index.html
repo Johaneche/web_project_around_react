@@ -61,16 +61,19 @@
             <img
               class="gallery__img"
               src="./images/img1-central-park (2).jpg"
-              alt="Debe carga la imgagen de la tarjeta"
+              alt="Debe carga la imagen de la tarjeta"
             />
+
+            <button class="gallery__button gallery__button_delete"></button>
+
             <div class="gallery__content">
               <h2 class="gallery__text">Central Park, NYC</h2>
               <button class="gallery__button gallery__button_like">
-                <img
+                <!-- <img
                   class="gallery__like"
                   src="./images/img-like.svg"
                   alt="Debe cargar el corzaon del like"
-                />
+                /> -->
               </button>
             </div>
           </div>
@@ -80,7 +83,7 @@
             <img
               class="gallery__img"
               src="./images/img1-bear-mountain.png"
-              alt="Debe carga la imgagen de la tarjeta"
+              alt="Debe carga la imagen de la tarjeta"
             />
             <div class="gallery__content">
               <h2 class="gallery__text">Bear Mountain, NY</h2>
@@ -99,7 +102,7 @@
             <img
               class="gallery__img"
               src="./images/img2-hoboken.png"
-              alt="Debe carga la imgagen de la tarjeta"
+              alt="Debe carga la imagen de la tarjeta"
             />
             <div class="gallery__content">
               <h2 class="gallery__text">Liberty State Park, Hoboken</h2>
@@ -118,7 +121,7 @@
             <img
               class="gallery__img"
               src="./images/img3-manhathan.png"
-              alt="Debe carga la imgagen de la tarjeta"
+              alt="Debe carga la imagen de la tarjeta"
             />
             <div class="gallery__content">
               <h2 class="gallery__text">Manhattan, NY</h2>
@@ -137,7 +140,7 @@
             <img
               class="gallery__img"
               src="./images/img4-timesquare.png"
-              alt="Debe carga la imgagen de la tarjeta"
+              alt="Debe carga la imagen de la tarjeta"
             />
             <div class="gallery__content">
               <h2 class="gallery__text">Times Square, NY</h2>
@@ -156,7 +159,7 @@
             <img
               class="gallery__img"
               src="./images/img5-vessel.png"
-              alt="Debe carga la imgagen de la tarjeta"
+              alt="Debe carga la imagen de la tarjeta"
             />
             <div class="gallery__content">
               <h2 class="gallery__text">Vessel, NY</h2>
@@ -177,10 +180,11 @@
       </footer>
     </div>
 
-    <div class="popup">
+    <div class="popup popup__opened">
       <div class="popup__container">
         <button class="popup__button popup__button_close">×</button>
-        <div class="popup__form">
+
+        <!-- <div class="popup__form form__edit">
           <h2 class="popup__title">Editar Perfil</h2>
           <input
             class="popup__input popup__input_name"
@@ -193,6 +197,25 @@
             placeholder="Explorador"
           />
           <button class="popup__button popup__button_save">Guardar</button>
+        </div> -->
+
+        <div class="popup__form form__add">
+          <h2 class="popup__title">Nuevo Lugar</h2>
+          <fieldset class="popup__form-content">
+            <input
+              class="popup__input popup__input_title"
+              type="text"
+              placeholder="Titulo"
+            />
+            <input
+              class="popup__input popup__input_url"
+              type="text"
+              placeholder="URL de la imagen"
+            />
+          </fieldset>
+          <button type="submit" class="popup__button popup__button_add">
+            Guardar
+          </button>
         </div>
       </div>
     </div>
