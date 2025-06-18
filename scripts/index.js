@@ -30,27 +30,92 @@ const initialCards = [
 let popUp = document.querySelector(".popup");
 let nameDefault = document.querySelector(".main__paragraph_name");
 let occupationDefault = document.querySelector(".main__paragraph_occupation");
+let popFormEdit = document.querySelector(".form__edit");
+let popFormAdd = document.querySelector(".form__add");
+let popNoOppened = document.querySelector(".popup__hidden");
+const galleryContainer = document.querySelector(".gallery");
 
 // Agregando los Botones a utilizar
 let btnEdit = document.querySelector(".main__button_edit");
 let btnCloseWindow = popUp.querySelector(".popup__button_close");
-let btnSave = popUp.querySelector(".popup__button_save");
+let btnEditSave = popUp.querySelector(".popup__button_save");
+let btnAdd = document.querySelector(".main__button_add");
+let btnAddSave = document.querySelector(".popup__button_add");
+const btnLike = document.querySelectorAll(".gallery__button_like");
+const btnDelete = document.querySelector(".gallery__button_delete");
+const btnCard = document.querySelector(".gallery__img");
+
+initialCards.forEach((card) => {
+  createCard(card.name, card.link);
+});
+
+function createCard(title, link) {
+  const galleryCard = document.createElement("div");
+  galleryCard.classList.add("gallery__card");
+
+  const galleryImg = document.createElement("img");
+  galleryImg.classList.add("gallery__img");
+  galleryImg.setAttribute("src", link);
+  galleryImg.setAttribute("alt", "Debe carga la imagen de la tarjeta");
+
+  const galleryBtnDelete = document.createElement("button");
+  galleryBtnDelete.classList.add("gallery__button");
+  galleryBtnDelete.classList.add("gallery__button_delete");
+
+  const galleryContent = document.createElement("div");
+  galleryContent.classList.add("gallery__content");
+
+  const galleryText = document.createElement("h2");
+  galleryText.classList.add("gallery__text");
+  galleryText.textContent = title;
+
+  const galleryBtnLike = document.createElement("button");
+  galleryBtnLike.classList.add("gallery__button");
+  galleryBtnLike.classList.add("gallery__button_like");
+
+  galleryCard.append(galleryImg, galleryBtnDelete, galleryContent);
+  galleryContent.append(galleryText, galleryBtnLike);
+  galleryContainer.prepend(galleryCard);
+
+  // create eventlinse delete
+}
+
+// btnDelete.addEventListener("click", function () {
+//   galleryCard.remove();
+// });
 
 // Agregando los Inputs
 let inName = document.querySelector(".popup__input_name");
 let inOccupation = document.querySelector(".popup__input_occupation");
+let inTitle = document.querySelector(".popup__input_title");
+let inURL = document.querySelector(".popup__input_url");
 
-// Abrir la ventana de Editar
+// Funcion Cerrar ventana: Popup
+function closeWindow() {
+  popUp.classList.remove("popup__opened"); // Elimino la clase al popup para que NO sea visible
+  popFormAdd.classList.remove("popup__hidden"); // Elimino la clase para que sea visible
+  popFormEdit.classList.remove("popup__hidden"); // Elimino la clase para que sea visible
+}
+
+// Funcion Abrir ventana: Agregar Tarjeta
+function addWindow() {
+  popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
+  popFormEdit.classList.add("popup__hidden"); // Agrego la clase al form__edit para que sea no visible
+}
+
+// Funcion Abrir ventana: Editar
 function editWindow() {
   popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
-
+  popFormAdd.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
   inName.value = nameDefault.textContent.trim(); // Me aparezca el nombre del perfil a modificar
   inOccupation.value = occupationDefault.textContent.trim(); // Me aparezca la ocupacion del perfil a modificar
 }
 
-// Cerrar la ventana de Editar
-function closeWindow() {
-  popUp.classList.remove("popup__opened"); // Elimino la clase al popup para que NO sea visible
+// Funcion Abrir ventana: Tarjeta
+function cardWindow() {
+  popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
+  popFormAdd.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
+  popFormEdit.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
 }
 
 function saveInfo() {
@@ -59,6 +124,30 @@ function saveInfo() {
   closeWindow();
 }
 
-btnEdit.addEventListener("click", editWindow);
+function addCard() {
+  console.log("Agrego una nueva tarjeta");
+
+  createCard(inTitle.value, inURL.value);
+  console.log(createCard);
+
+  inTitle.value = "";
+  inURL.value = "";
+  closeWindow();
+}
+
+// Eventos
 btnCloseWindow.addEventListener("click", closeWindow);
-btnSave.addEventListener("click", saveInfo);
+btnEdit.addEventListener("click", editWindow);
+btnEditSave.addEventListener("click", saveInfo);
+btnAdd.addEventListener("click", addWindow);
+btnAddSave.addEventListener("click", addCard);
+btnCard.addEventListener("click", cardWindow);
+
+cardWindow;
+
+// Botones: Me Gusta
+btnLike.forEach((button) => {
+  button.addEventListener("click", () => {
+    button.classList.toggle("gallery__button_like_active");
+  });
+});
