@@ -1,38 +1,11 @@
-//Las 6 Tarjetas Iniciales
-const initialCards = [
-  {
-    name: "Central Park, NYC",
-    link: "./images/img1-central-park (2).jpg",
-  },
-  {
-    name: "Bear Mountain, NY",
-    link: "./images/img1-bear-mountain.png",
-  },
-  {
-    name: "Liberty State Park, NJ",
-    link: "./images/img2-hoboken.png",
-  },
-  {
-    name: "Manhattan, NY",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
-  },
-  {
-    name: "Times Square, NY",
-    link: "./images/img4-timesquare.png",
-  },
-  {
-    name: "Vessel, NY",
-    link: "./images/img5-vessel.png",
-  },
-];
-
 // Agregando las Clases a utilizar
 let popUp = document.querySelector(".popup");
 let nameDefault = document.querySelector(".main__paragraph_name");
 let occupationDefault = document.querySelector(".main__paragraph_occupation");
 let popFormEdit = document.querySelector(".form__edit");
 let popFormAdd = document.querySelector(".form__add");
-let popNoOppened = document.querySelector(".popup__hidden");
+let popImages = document.querySelector(".popup__images");
+let popHidden = document.querySelector(".popup__hidden");
 const galleryContainer = document.querySelector(".gallery");
 
 // Agregando los Botones a utilizar
@@ -45,10 +18,45 @@ const btnLike = document.querySelectorAll(".gallery__button_like");
 const btnDelete = document.querySelector(".gallery__button_delete");
 const btnCard = document.querySelector(".gallery__img");
 
+// Agregando los Inputs
+let inName = document.querySelector(".popup__input_name");
+let inOccupation = document.querySelector(".popup__input_occupation");
+let inTitle = document.querySelector(".popup__input_title");
+let inURL = document.querySelector(".popup__input_url");
+
+//Las 6 Tarjetas Iniciales
+const initialCards = [
+  {
+    name: "Central Park, NYC",
+    link: "./images/img1-central-park (2).jpg",
+  },
+  {
+    name: "Bear Mountain, NY",
+    link: "./images/img1-bear-mountain.png",
+  },
+  {
+    name: "Liberty State Park, New Jersey",
+    link: "./images/img2-hoboken.png",
+  },
+  {
+    name: "Manhattan, NY",
+    link: "./images/img3-manhathan.png",
+  },
+  {
+    name: "Times Square, NY",
+    link: "./images/img4-timesquare.png",
+  },
+  {
+    name: "Vessel, NY",
+    link: "./images/img5-vessel.png",
+  },
+];
+
 initialCards.forEach((card) => {
   createCard(card.name, card.link);
 });
 
+// Funcion para Crear Tarjeta
 function createCard(title, link) {
   const galleryCard = document.createElement("div");
   galleryCard.classList.add("gallery__card");
@@ -77,46 +85,49 @@ function createCard(title, link) {
   galleryContent.append(galleryText, galleryBtnLike);
   galleryContainer.prepend(galleryCard);
 
-  // create eventlinse delete
+  // Boton Eliminar
+  galleryBtnDelete.addEventListener("click", function () {
+    galleryCard.remove();
+  });
+
+  // Boton Me gusta
+  galleryBtnLike.addEventListener("click", function () {
+    galleryBtnLike.classList.toggle("gallery__button_like_active");
+  });
+
+  // Abrir Ventana Imagen
 }
-
-// btnDelete.addEventListener("click", function () {
-//   galleryCard.remove();
-// });
-
-// Agregando los Inputs
-let inName = document.querySelector(".popup__input_name");
-let inOccupation = document.querySelector(".popup__input_occupation");
-let inTitle = document.querySelector(".popup__input_title");
-let inURL = document.querySelector(".popup__input_url");
 
 // Funcion Cerrar ventana: Popup
 function closeWindow() {
   popUp.classList.remove("popup__opened"); // Elimino la clase al popup para que NO sea visible
   popFormAdd.classList.remove("popup__hidden"); // Elimino la clase para que sea visible
   popFormEdit.classList.remove("popup__hidden"); // Elimino la clase para que sea visible
+  popImages.classList.remove("popup__hidden"); // Elimino la clase para que sea visible
 }
 
 // Funcion Abrir ventana: Agregar Tarjeta
 function addWindow() {
   popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
   popFormEdit.classList.add("popup__hidden"); // Agrego la clase al form__edit para que sea no visible
+  popImages.classList.add("popup__hidden"); // Agrego la clase al popup__images para que sea no visible
 }
 
 // Funcion Abrir ventana: Editar
 function editWindow() {
   popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
   popFormAdd.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
+  popImages.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
   inName.value = nameDefault.textContent.trim(); // Me aparezca el nombre del perfil a modificar
   inOccupation.value = occupationDefault.textContent.trim(); // Me aparezca la ocupacion del perfil a modificar
 }
 
 // Funcion Abrir ventana: Tarjeta
-function cardWindow() {
-  popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
-  popFormAdd.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
-  popFormEdit.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
-}
+// function cardWindow() {
+//   popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
+//   popFormAdd.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
+//   popFormEdit.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
+// }
 
 function saveInfo() {
   nameDefault.textContent = inName.value; //Cambio el nombre actual por el valor que hay el input
@@ -125,8 +136,6 @@ function saveInfo() {
 }
 
 function addCard() {
-  console.log("Agrego una nueva tarjeta");
-
   createCard(inTitle.value, inURL.value);
   console.log(createCard);
 
@@ -141,13 +150,3 @@ btnEdit.addEventListener("click", editWindow);
 btnEditSave.addEventListener("click", saveInfo);
 btnAdd.addEventListener("click", addWindow);
 btnAddSave.addEventListener("click", addCard);
-btnCard.addEventListener("click", cardWindow);
-
-cardWindow;
-
-// Botones: Me Gusta
-btnLike.forEach((button) => {
-  button.addEventListener("click", () => {
-    button.classList.toggle("gallery__button_like_active");
-  });
-});

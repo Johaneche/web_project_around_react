@@ -101,19 +101,25 @@
             />
           </fieldset>
           <button type="submit" class="popup__button popup__button_add">
-            Guardar
+            Crear
           </button>
         </div>
 
-        <!-- Añadir popup de la tarjeta -->
+        <!-- Abrir Tarjeta -->
+        <div class="popup__images">
+          <img
+            class="popup__image"
+            src="./images/img5-vessel.png"
+            alt="Debe cargar la imagen de la tarjeta"
+          />
+          <div class="popup__text-content">
+            <h2 class="popup__text">Titulo de la Tarjeta</h2>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Enlazamos el JS al HTML -->
-    <script src="./scripts/index.js"></script>
-
     <!-- Templeta Tarjetas-->
-
     <template id="card__template">
       <div class="card__container">
         <img
@@ -130,5 +136,8 @@
         </div>
       </div>
     </template>
+
+    <!-- Enlazamos el JS al HTML -->
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
