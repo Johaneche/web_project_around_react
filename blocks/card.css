@@ -1,0 +1,85 @@
+.card__container {
+  /* gallery__card */
+  max-width: 290px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.card__img {
+  /* gallery__img */
+  max-width: 290px;
+  max-height: 290px;
+  height: 100%;
+  width: 100%;
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+}
+
+.card__button_delete {
+  /* gallery__button_delete */
+  background: url("../images/trash.svg");
+  border: none;
+  width: 19px;
+  height: 19px;
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.card__button_delete:hover {
+  background: url("../images/trash-hover.svg");
+  border: none;
+  width: 19px;
+  height: 19px;
+
+  cursor: pointer;
+}
+
+.card__content {
+  /* gallery__content */
+  padding: 0px 10px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.card__title {
+  /* gallery__text */
+  color: #000;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 100%;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card__button_like {
+  /* gallery__button_like */
+  background-color: #fff;
+  background: url("../images/img-like.svg");
+  width: 21px;
+  height: 19px;
+  border: none;
+
+  margin: auto 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.card__button_like:hover {
+  opacity: 50%;
+  background-color: #fff;
+}
+
+.card__button_like_active {
+  background-image: url("../images/img-like-active.svg");
+  background-color: #fff;
+}

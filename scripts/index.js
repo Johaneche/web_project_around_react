@@ -1,34 +1,34 @@
 // Agregando las Clases a utilizar
-let popUp = document.querySelector(".popup");
-let nameDefault = document.querySelector(".main__paragraph_name");
-let occupationDefault = document.querySelector(".main__paragraph_occupation");
-let popFormEdit = document.querySelector(".form__edit");
-let popFormAdd = document.querySelector(".form__add");
-let popImages = document.querySelector(".popup__images");
-let popHidden = document.querySelector(".popup__hidden");
+const popUp = document.querySelector(".popup");
+const nameDefault = document.querySelector(".main__paragraph_name");
+const occupationDefault = document.querySelector(".main__paragraph_occupation");
+const popFormEdit = document.querySelector(".form__edit");
+const popFormAdd = document.querySelector(".form__add");
+const popImages = document.querySelector(".popup__images");
+const popHidden = document.querySelector(".popup__hidden");
 const galleryContainer = document.querySelector(".gallery");
 
 // Agregando los Botones a utilizar
-let btnEdit = document.querySelector(".main__button_edit");
-let btnCloseWindow = popUp.querySelector(".popup__button_close");
-let btnEditSave = popUp.querySelector(".popup__button_save");
-let btnAdd = document.querySelector(".main__button_add");
-let btnAddSave = document.querySelector(".popup__button_add");
+const btnEdit = document.querySelector(".main__button_edit");
+const btnCloseWindow = popUp.querySelector(".popup__button_close");
+const btnEditSave = popUp.querySelector(".popup__button_save");
+const btnAdd = document.querySelector(".main__button_add");
+const btnAddSave = document.querySelector(".popup__button_add");
 const btnLike = document.querySelectorAll(".gallery__button_like");
 const btnDelete = document.querySelector(".gallery__button_delete");
 const btnCard = document.querySelector(".gallery__img");
 
 // Agregando los Inputs
-let inName = document.querySelector(".popup__input_name");
-let inOccupation = document.querySelector(".popup__input_occupation");
-let inTitle = document.querySelector(".popup__input_title");
-let inURL = document.querySelector(".popup__input_url");
+const inName = document.querySelector(".popup__input_name");
+const inOccupation = document.querySelector(".popup__input_occupation");
+const inTitle = document.querySelector(".popup__input_title");
+const inURL = document.querySelector(".popup__input_url");
 
 //Las 6 Tarjetas Iniciales
 const initialCards = [
   {
     name: "Central Park, NYC",
-    link: "./images/img1-central-park (2).jpg",
+    link: "./images/img1-central-park.png",
   },
   {
     name: "Bear Mountain, NY",
@@ -58,31 +58,25 @@ initialCards.forEach((card) => {
 
 // Funcion para Crear Tarjeta
 function createCard(title, link) {
-  const galleryCard = document.createElement("div");
-  galleryCard.classList.add("gallery__card");
+  // Clonar template
+  const cardTemplate = document.querySelector("#card__template").content;
+  const galleryCard = cardTemplate
+    .querySelector(".card__container")
+    .cloneNode(true);
 
-  const galleryImg = document.createElement("img");
-  galleryImg.classList.add("gallery__img");
-  galleryImg.setAttribute("src", link);
-  galleryImg.setAttribute("alt", "Debe carga la imagen de la tarjeta");
+  const galleryImg = galleryCard.querySelector(".card__img");
 
-  const galleryBtnDelete = document.createElement("button");
-  galleryBtnDelete.classList.add("gallery__button");
-  galleryBtnDelete.classList.add("gallery__button_delete");
+  galleryImg.src = link;
+  galleryImg.alt = title;
 
-  const galleryContent = document.createElement("div");
-  galleryContent.classList.add("gallery__content");
+  const galleryBtnDelete = galleryCard.querySelector(".card__button_delete");
 
-  const galleryText = document.createElement("h2");
-  galleryText.classList.add("gallery__text");
-  galleryText.textContent = title;
+  const galleryContent = galleryCard.querySelector(".card__content");
+  galleryContent.querySelector(".card__title").textContent = title;
 
-  const galleryBtnLike = document.createElement("button");
-  galleryBtnLike.classList.add("gallery__button");
-  galleryBtnLike.classList.add("gallery__button_like");
+  const galleryBtnLike = galleryCard.querySelector(".card__button_like");
 
-  galleryCard.append(galleryImg, galleryBtnDelete, galleryContent);
-  galleryContent.append(galleryText, galleryBtnLike);
+  // clono a galleryCard en la seccion de gallery (HTML)
   galleryContainer.prepend(galleryCard);
 
   // Boton Eliminar
@@ -92,10 +86,22 @@ function createCard(title, link) {
 
   // Boton Me gusta
   galleryBtnLike.addEventListener("click", function () {
-    galleryBtnLike.classList.toggle("gallery__button_like_active");
+    galleryBtnLike.classList.toggle("card__button_like_active");
   });
 
-  // Abrir Ventana Imagen
+  const popImage = document.querySelector(".popup__image");
+  const popText = document.querySelector(".popup__text");
+
+  // Boton Imagen: Abrir Ventana Imagen
+  galleryImg.addEventListener("click", function () {
+    console.log("Abriendo la ventana de la imagen");
+    popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
+    popFormAdd.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
+    popFormEdit.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
+
+    popImage.setAttribute("src", link);
+    popText.textContent = title;
+  });
 }
 
 // Funcion Cerrar ventana: Popup
@@ -121,13 +127,6 @@ function editWindow() {
   inName.value = nameDefault.textContent.trim(); // Me aparezca el nombre del perfil a modificar
   inOccupation.value = occupationDefault.textContent.trim(); // Me aparezca la ocupacion del perfil a modificar
 }
-
-// Funcion Abrir ventana: Tarjeta
-// function cardWindow() {
-//   popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
-//   popFormAdd.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
-//   popFormEdit.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
-// }
 
 function saveInfo() {
   nameDefault.textContent = inName.value; //Cambio el nombre actual por el valor que hay el input
