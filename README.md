@@ -1,6 +1,8 @@
-# Titulo: Alrededor de los EE.UU.
+# Alrededor de los EE.UU.
 
 ## Funcionalidad:
+
+Es una página web
 
 En este proyecto empezamos a utilizar lo siguiente:
 
@@ -8,3 +10,13 @@ En este proyecto empezamos a utilizar lo siguiente:
 - Consultas de Medios (Media Query)
 - Java Script
 - Git
+
+Adicionalmente empezamos a trabajaron con arrays y bucles para hacer que el contenido se muestre en una página automáticamente. Se crea un template para solucionar la vulnerabilidad de la página. Se clona, agrega, elimina y reemplaza elementos de la página a través de JavaScript.
+
+## Enlace a GitHub Pages
+
+-https://github.com/Johaneche/web_project_around
+
+## Contacto
+
+[Johan Echeverry] - [johan.manuel.echeverry@gmail.com]
