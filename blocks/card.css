@@ -1,16 +1,12 @@
 .card__container {
-  /* gallery__card */
   max-width: 290px;
   border-radius: 10px;
   position: relative;
 }
 
 .card__img {
-  /* gallery__img */
-  max-width: 290px;
-  max-height: 290px;
-  height: 100%;
-  width: 100%;
+  height: 290px;
+  width: 290px;
 
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -18,7 +14,6 @@
 }
 
 .card__button_delete {
-  /* gallery__button_delete */
   background: url("../images/trash.svg");
   border: none;
   width: 19px;
@@ -38,7 +33,6 @@
 }
 
 .card__content {
-  /* gallery__content */
   padding: 0px 10px;
   background-color: #fff;
   display: flex;
@@ -49,11 +43,11 @@
 }
 
 .card__title {
-  /* gallery__text */
   color: #000;
   font-family: "Inter-Regular", sans-serif;
   font-size: 24px;
   font-weight: 900;
+  width: 90%;
   line-height: 100%;
 
   text-overflow: ellipsis;
@@ -62,7 +56,6 @@
 }
 
 .card__button_like {
-  /* gallery__button_like */
   background-color: #fff;
   background: url("../images/img-like.svg");
   width: 21px;
@@ -82,4 +75,20 @@
 .card__button_like_active {
   background-image: url("../images/img-like-active.svg");
   background-color: #fff;
+}
+
+@media screen and (max-width: 605px) {
+  .card__container {
+    max-width: 280px;
+    width: 100%;
+  }
+
+  .card__img {
+    max-width: 280px;
+    width: 100%;
+    height: 280px;
+
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
 }

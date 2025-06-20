@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
 
-  max-width: 880px;
+  max-width: 905px;
   margin: auto;
 }
 
@@ -21,6 +21,7 @@
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, 1fr);
   column-gap: 20px;
+  justify-content: center;
 }
 
 .main__paragraph_name {
@@ -113,7 +114,7 @@
   }
 }
 
-@media screen and (min-width: 606px) and (max-width: 880px) {
+@media screen and (min-width: 606px) and (max-width: 905px) {
   .main {
     margin: 20px;
   }
