@@ -2,8 +2,8 @@
 const popUp = document.querySelector(".popup");
 const nameDefault = document.querySelector(".main__paragraph_name");
 const occupationDefault = document.querySelector(".main__paragraph_occupation");
-const popFormEdit = document.querySelector(".form__edit");
-const popFormAdd = document.querySelector(".form__add");
+const popFormEdit = document.querySelector(".popup__form-edit");
+const popFormAdd = document.querySelector(".popup__form-add");
 const popImages = document.querySelector(".popup__images");
 const popHidden = document.querySelector(".popup__hidden");
 const galleryContainer = document.querySelector(".gallery");
@@ -115,7 +115,7 @@ function closeWindow() {
 // Funcion Abrir ventana: Agregar Tarjeta
 function addWindow() {
   popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
-  popFormEdit.classList.add("popup__hidden"); // Agrego la clase al form__edit para que sea no visible
+  popFormEdit.classList.add("popup__hidden"); // Agrego la clase al popup__form-edit para que sea no visible
   popImages.classList.add("popup__hidden"); // Agrego la clase al popup__images para que sea no visible
 }
 
