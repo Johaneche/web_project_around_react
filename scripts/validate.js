@@ -5,27 +5,36 @@ const errorOccupation = document.querySelector(
 
 function validateInput(input) {
   const span = document.querySelector(`#${input.id}-error`);
-  if (!inName.validity.valid) {
+  if (!input.validity.valid) {
     span.textContent = input.validationMessage;
   } else {
-    errorName.textContent = "";
+    span.textContent = "";
   }
 }
 
 function toggleButton() {
   if (inName.validity.valid && inOccupation.validity.valid) {
     btnEditSave.disable = false;
+    console.log("Habilito el boton");
+    console.log(btnEditSave.disable);
   } else {
     btnEditSave.disable = true;
+    console.log("Desabilito el boton");
+    console.log(btnEditSave.disable);
   }
 }
 
+toggleButton();
+
 inName.addEventListener("input", function () {
   validateInput(inName);
+  toggleButton();
 });
 
 inOccupation.addEventListener("input", function () {
   validateInput(inOccupation);
+  toggleButton();
+  // console.log(btnEditSave.disable);
 });
 
 /////////////////////////////////////////////////////
