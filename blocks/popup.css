@@ -78,6 +78,10 @@
   line-height: 100%;
 }
 
+.popup__input:invalid {
+  border-bottom: 1px solid #ff0000;
+}
+
 .popup__button_save {
   cursor: pointer;
 
@@ -93,8 +97,20 @@
   line-height: 100%;
   text-align: center;
 }
+
 .popup__button_save:hover {
   opacity: 80%;
+}
+
+.popup__button_save:disabled {
+  opacity: 20%;
+  border: 1px solid #000000;
+}
+
+.popup__input_name-error,
+.popup__input_occupation-error {
+  color: red;
+  border-color: #f44336;
 }
 
 .popup__form-content {
