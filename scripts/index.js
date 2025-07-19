@@ -94,7 +94,7 @@ function createCard(title, link) {
 
   // Boton Imagen: Abrir Ventana Imagen
   galleryImg.addEventListener("click", function () {
-    console.log("Abriendo la ventana de la imagen");
+    document.addEventListener("keydown", keyPush); // Evento listener Escape
     popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
     popFormAdd.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
     popFormEdit.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
@@ -110,10 +110,12 @@ function closeWindow() {
   popFormAdd.classList.remove("popup__hidden"); // Elimino la clase para que sea visible
   popFormEdit.classList.remove("popup__hidden"); // Elimino la clase para que sea visible
   popImages.classList.remove("popup__hidden"); // Elimino la clase para que sea visible
+  document.removeEventListener("keydown", keyPush); //Elimino la clase keyPush
 }
 
 // Funcion Abrir ventana: Agregar Tarjeta
 function addWindow() {
+  document.addEventListener("keydown", keyPush); // Evento listener Escape
   popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
   popFormEdit.classList.add("popup__hidden"); // Agrego la clase al popup__form-edit para que sea no visible
   popImages.classList.add("popup__hidden"); // Agrego la clase al popup__images para que sea no visible
@@ -121,6 +123,7 @@ function addWindow() {
 
 // Funcion Abrir ventana: Editar
 function editWindow() {
+  document.addEventListener("keydown", keyPush); // Evento listener Escape
   popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
   popFormAdd.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
   popImages.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
@@ -128,7 +131,8 @@ function editWindow() {
   inOccupation.value = occupationDefault.textContent.trim(); // Me aparezca la ocupacion del perfil a modificar
 }
 
-function saveInfo() {
+function saveInfo(evt) {
+  evt.preventDefault();
   nameDefault.textContent = inName.value; //Cambio el nombre actual por el valor que hay el input
   occupationDefault.textContent = inOccupation.value; //Cambio la ocupacion actual por el valor que hay el input
   closeWindow();
@@ -136,16 +140,29 @@ function saveInfo() {
 
 function addCard() {
   createCard(inTitle.value, inURL.value);
-  console.log(createCard);
 
   inTitle.value = "";
   inURL.value = "";
   closeWindow();
 }
+// Funcion validacion Tecla Presionada
+function keyPush(evt) {
+  if (evt.key === "Escape") {
+    closeWindow();
+  }
+}
 
-// Eventos
+// Eventos Listener para botones
 btnCloseWindow.addEventListener("click", closeWindow);
 btnEdit.addEventListener("click", editWindow);
 btnEditSave.addEventListener("click", saveInfo);
 btnAdd.addEventListener("click", addWindow);
 btnAddSave.addEventListener("click", addCard);
+
+// Eventos Listener para Click
+
+popUp.addEventListener("click", function (evt) {
+  if (evt.target === popUp) {
+    closeWindow();
+  }
+});

@@ -105,10 +105,13 @@
 .popup__button_save:disabled {
   opacity: 20%;
   border: 1px solid #000000;
+  cursor: not-allowed;
 }
 
 .popup__input_name-error,
-.popup__input_occupation-error {
+.popup__input_occupation-error,
+.popup__input_url-error,
+.popup__input_title-error {
   color: red;
   border-color: #f44336;
 }
@@ -138,6 +141,12 @@
 
 .popup__button_add:hover {
   opacity: 80%;
+}
+
+.popup__button_add:disabled {
+  opacity: 20%;
+  border: 1px solid #000000;
+  cursor: not-allowed;
 }
 
 .popup__hidden {

@@ -1,48 +1,4 @@
-const errorName = document.querySelector(".popup__input_name-error");
-const errorOccupation = document.querySelector(
-  ".popup__input_occupation-error"
-);
-
-function validateInput(input) {
-  const span = document.querySelector(`#${input.id}-error`);
-  if (!input.validity.valid) {
-    span.textContent = input.validationMessage;
-  } else {
-    span.textContent = "";
-  }
-}
-
-function toggleButton() {
-  if (inName.validity.valid && inOccupation.validity.valid) {
-    btnEditSave.disable = false;
-    console.log("Habilito el boton");
-    console.log(btnEditSave.disable);
-  } else {
-    btnEditSave.disable = true;
-    console.log("Desabilito el boton");
-    console.log(btnEditSave.disable);
-  }
-}
-
-toggleButton();
-
-inName.addEventListener("input", function () {
-  validateInput(inName);
-  toggleButton();
-});
-
-inOccupation.addEventListener("input", function () {
-  validateInput(inOccupation);
-  toggleButton();
-  // console.log(btnEditSave.disable);
-});
-
-/////////////////////////////////////////////////////
-// habilitar
-const enableValidation = function (config) {
-  const forms = document.querySelectorAll(config.formSelector);
-  console.log(forms);
-};
+/////////////////////////////////////////////////////////////
 
 enableValidation({
   formSelector: ".popup__form",
@@ -53,4 +9,57 @@ enableValidation({
   errorClass: "popup__error_visible",
 });
 
-// reset
+// Validamos el formulario
+function enableValidation(settings) {
+  const formList = document.querySelectorAll("form"); //Seleccionamos todos los formularios
+  // Hacemos una lista de formularios
+  formList.forEach(function (form) {
+    // console.log("Formulario con el id: ", form.id);
+    const inputList = Array.from(form.querySelectorAll("input")); //cambio el tipo de dato de nodo a array
+    setEventListeners(form, inputList);
+  });
+}
+
+// Validamos los Event Listeners
+function setEventListeners(form, inputList) {
+  // Validar el boton
+  const buttonElement = form.querySelector(".popup__button");
+  validateButton(buttonElement, inputList);
+
+  console.log("El boton es: ", buttonElement);
+  form.addEventListener("submit", function (evt) {
+    evt.preventDefault();
+  });
+  inputList.forEach(function (input) {
+    input.addEventListener("input", function () {
+      showInputError(input);
+      validateButton(buttonElement, inputList);
+    });
+  });
+}
+
+// Habilitamos o desabilitamos el boton de guardan
+function validateButton(buttonElement, inputList) {
+  if (checkInputValidity(inputList)) {
+    buttonElement.disabled = true;
+  } else {
+    buttonElement.removeAttribute("disabled");
+  }
+}
+
+// Validamos los inputs
+function checkInputValidity(inputList) {
+  return inputList.some(function (input) {
+    return !input.validity.valid;
+  });
+}
+
+// Mostramos el mensaje de Error
+function showInputError(input) {
+  const spanElement = document.querySelector(`#${input.id}-error`);
+  if (!input.validity.valid) {
+    spanElement.textContent = input.validationMessage;
+  } else {
+    spanElement.textContent = "";
+  }
+}
