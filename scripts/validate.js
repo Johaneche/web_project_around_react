@@ -42,8 +42,12 @@ function setEventListeners(form, inputList) {
 function validateButton(buttonElement, inputList) {
   if (checkInputValidity(inputList)) {
     buttonElement.disabled = true;
+    // buttonElement.classList.add("popup__button_disabled");
+    // buttonElement.classList.remove("popup__button_disabled");
   } else {
     buttonElement.removeAttribute("disabled");
+    // buttonElement.classList.remove("popup__button_disabled");
+    // buttonElement.classList.add("popup__button_disabled");
   }
 }
 
