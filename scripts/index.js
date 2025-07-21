@@ -70,7 +70,6 @@ function createCard(title, link) {
   galleryImg.alt = title;
 
   const galleryBtnDelete = galleryCard.querySelector(".card__button_delete");
-
   const galleryContent = galleryCard.querySelector(".card__content");
   galleryContent.querySelector(".card__title").textContent = title;
 
@@ -115,6 +114,7 @@ function closeWindow() {
 
 // Funcion Abrir ventana: Agregar Tarjeta
 function addWindow() {
+  popFormAdd.reset(); //Reseteo el formulario
   document.addEventListener("keydown", keyPush); // Evento listener Escape
   popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
   popFormEdit.classList.add("popup__hidden"); // Agrego la clase al popup__form-edit para que sea no visible
@@ -138,11 +138,9 @@ function saveInfo(evt) {
   closeWindow();
 }
 
+// Agregar Tarjeta
 function addCard() {
   createCard(inTitle.value, inURL.value);
-
-  inTitle.value = "";
-  inURL.value = "";
   closeWindow();
 }
 // Funcion validacion Tecla Presionada

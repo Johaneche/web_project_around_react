@@ -1,17 +1,15 @@
 /////////////////////////////////////////////////////////////
-
-enableValidation({
+const settings = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
-});
+};
+
+enableValidation(settings);
 
 // Validamos el formulario
 function enableValidation(settings) {
-  const formList = document.querySelectorAll("form"); //Seleccionamos todos los formularios
+  const formList = document.querySelectorAll(settings.formSelector); //Seleccionamos todos los formularios
   // Hacemos una lista de formularios
   formList.forEach(function (form) {
     // console.log("Formulario con el id: ", form.id);
@@ -23,10 +21,10 @@ function enableValidation(settings) {
 // Validamos los Event Listeners
 function setEventListeners(form, inputList) {
   // Validar el boton
-  const buttonElement = form.querySelector(".popup__button");
+  const buttonElement = form.querySelector(settings.submitButtonSelector);
   validateButton(buttonElement, inputList);
 
-  console.log("El boton es: ", buttonElement);
+  // console.log("El boton es: ", buttonElement);
   form.addEventListener("submit", function (evt) {
     evt.preventDefault();
   });
@@ -42,12 +40,8 @@ function setEventListeners(form, inputList) {
 function validateButton(buttonElement, inputList) {
   if (checkInputValidity(inputList)) {
     buttonElement.disabled = true;
-    // buttonElement.classList.add("popup__button_disabled");
-    // buttonElement.classList.remove("popup__button_disabled");
   } else {
     buttonElement.removeAttribute("disabled");
-    // buttonElement.classList.remove("popup__button_disabled");
-    // buttonElement.classList.add("popup__button_disabled");
   }
 }
 
