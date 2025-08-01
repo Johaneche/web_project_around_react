@@ -12,6 +12,9 @@ En este proyecto empezamos a utilizar lo siguiente:
 - Git
 - Formularios
 - Validación de formularios
+- Programacion Orientada a Objetos en JS (POO)
+- Sprint 10: Refactorización del codigo para uso de Clases.
+  - Creación de las clases Card y FormValidator
 
 Adicionalmente empezamos a trabajaron con arrays y bucles para hacer que el contenido se muestre en una página automáticamente. Se crea un template para solucionar la vulnerabilidad de la página. Se clona, agrega, elimina y reemplaza elementos de la página a través de JavaScript.
 
