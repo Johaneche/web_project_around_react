@@ -26,30 +26,30 @@ const inURL = document.querySelector(".popup__input_url");
 
 // Funcion Abrir ventana: Agregar Tarjeta
 export function addWindow() {
-  popFormAdd.reset(); //Reseteo el formulario
-  document.addEventListener("keydown", keyPush); // Evento listener Escape
-  popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
-  popFormEdit.classList.add("popup__hidden"); // Agrego la clase al popup__form-edit para que sea no visible
-  popImages.classList.add("popup__hidden"); // Agrego la clase al popup__images para que sea no visible
+  // popFormAdd.reset(); //Reseteo el formulario
+  // document.addEventListener("keydown", keyPush); // Evento listener Escape
+  // popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
+  // popFormEdit.classList.add("popup__hidden"); // Agrego la clase al popup__form-edit para que sea no visible
+  // popImages.classList.add("popup__hidden"); // Agrego la clase al popup__images para que sea no visible
 }
 
 // Funcion Cerrar ventana: Popup
 export function closeWindow() {
-  popUp.classList.remove("popup__opened"); // Elimino la clase al popup para que NO sea visible
-  popFormAdd.classList.remove("popup__hidden"); // Elimino la clase para que sea visible
-  popFormEdit.classList.remove("popup__hidden"); // Elimino la clase para que sea visible
-  popImages.classList.remove("popup__hidden"); // Elimino la clase para que sea visible
-  document.removeEventListener("keydown", keyPush); //Elimino la clase keyPush
+  // popUp.classList.remove("popup__opened"); // Elimino la clase al popup para que NO sea visible
+  // popFormAdd.classList.remove("popup__hidden"); // Elimino la clase para que sea visible
+  // popFormEdit.classList.remove("popup__hidden"); // Elimino la clase para que sea visible
+  // popImages.classList.remove("popup__hidden"); // Elimino la clase para que sea visible
+  // document.removeEventListener("keydown", keyPush); //Elimino la clase keyPush
 }
 
 // Funcion Abrir ventana: Editar
 export function editWindow() {
-  document.addEventListener("keydown", keyPush); // Evento listener Escape
-  popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
-  popFormAdd.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
-  popImages.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
-  inName.value = nameDefault.textContent.trim(); // Me aparezca el nombre del perfil a modificar
-  inOccupation.value = occupationDefault.textContent.trim(); // Me aparezca la ocupacion del perfil a modificar
+  // document.addEventListener("keydown", keyPush); // Evento listener Escape
+  // popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
+  // popFormAdd.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
+  // popImages.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
+  // inName.value = nameDefault.textContent.trim(); // Me aparezca el nombre del perfil a modificar
+  // inOccupation.value = occupationDefault.textContent.trim(); // Me aparezca la ocupacion del perfil a modificar
 }
 
 // Funcion Guardar Informacion: Editar

@@ -1,9 +1,37 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
-import { addWindow, closeWindow, editWindow, saveInfo } from "./utils.js";
+import {
+  addWindow,
+  closeWindow,
+  editWindow,
+  saveInfo,
+} from "../utils/utils.js";
+import Section from "./Section.js";
+import PopUp from "./PopUp.js";
+import PopupWithForm from "./PopupWithForm.js";
+import PopupWithImage from "./PopupWithImage.js";
+
+// Crear las instancias de clases para los otros popup
+// 2 popwithForms (validacion)
+// 1 popupWithImag (image)
+
+const popupProfile = new PopupWithForm("#popupProfile");
+// console.log(popupProfile);
+popupProfile.setEventListeners();
+
+const popupAddCard = new PopupWithForm("#popupAddCard");
+// console.log(popupAddCard);
+popupAddCard.setEventListeners();
+
+const popupOpenCard = new PopupWithImage("#popupOpenCard");
+// console.log(popupOpenCard);
+popupOpenCard.setEventListeners();
+
+// newPopUp.open();
 
 // Agregando las Clases a utilizar
 const popUp = document.querySelector(".popup");
+// const popAddCard = document.querySelector(".popupAddCard");
 const nameDefault = document.querySelector(".main__paragraph_name");
 const occupationDefault = document.querySelector(".main__paragraph_occupation");
 const popFormEdit = document.querySelector(".popup__form-edit");
@@ -15,6 +43,7 @@ const galleryContainer = document.querySelector(".gallery");
 // Agregando los Botones a utilizar
 const btnEdit = document.querySelector(".main__button_edit");
 const btnCloseWindow = popUp.querySelector(".popup__button_close");
+// const btnCloseAddWindow = popAddCard.querySelector(".popup__button_close");
 const btnEditSave = popUp.querySelector(".popup__button_save");
 const btnAdd = document.querySelector(".main__button_add");
 const btnAddSave = document.querySelector(".popup__button_add");
@@ -69,17 +98,33 @@ formValidate.enableValidation();
 
 // Cargando cartas iniciales
 initialCards.forEach((item) => {
-  const newCard = new Card(item.name, item.link);
+  const newCard = new Card(
+    item.name,
+    item.link,
+    ".card__container",
+    (title, link) => {
+      // openpopimg
+      popupOpenCard.open(title, link);
+    }
+  );
   const cardElement = newCard._createCard();
   galleryContainer.append(cardElement);
 });
 
 // Eventos Listener para botones
-btnCloseWindow.addEventListener("click", closeWindow);
-btnEdit.addEventListener("click", editWindow);
+
+// btnCloseWindow.addEventListener("click", closeWindow);
+// btnCloseAddWindow.addEventListener("click", closeWindow);
+
+// btnEdit.addEventListener("click", editWindow);
+btnEdit.addEventListener("click", () => popupProfile.open());
 btnEditSave.addEventListener("click", saveInfo);
-btnAdd.addEventListener("click", addWindow);
+
+// btnAdd.addEventListener("click", addWindow);
+btnAdd.addEventListener("click", () => popupAddCard.open());
+
 btnAddSave.addEventListener("click", addCard);
+// btnAddSave.addEventListener("click", () => popupOpenCard.open());
 
 //  Evento Cerrar PopUp al dar click por fuera
 popUp.addEventListener("click", function (evt) {

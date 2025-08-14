@@ -1,4 +1,4 @@
-import { keyPush } from "./utils.js";
+import { keyPush } from "../utils/utils.js";
 
 const cardTemplate = document.querySelector("#card__template");
 const popUp = document.querySelector(".popup");
@@ -10,10 +10,11 @@ const popText = document.querySelector(".popup__text");
 
 // Elemento
 class Card {
-  constructor(title, link, selector) {
+  constructor(title, link, selector, handleCardClick) {
     this.title = title;
     this.link = link;
     this.selector = selector || ".card__container";
+    this.handleCardClick = handleCardClick;
   }
 
   _generateTemplate() {
@@ -44,8 +45,9 @@ class Card {
 
     // Evento Abrir Ventana Imagen
     this.elementImage.addEventListener("click", () => {
-      document.addEventListener("keydown", keyPush); // Evento listener Escape
-      this._popUpCard();
+      this.handleCardClick(this.title, this.link);
+      // document.addEventListener("keydown", keyPush); // Evento listener Escape
+      // this._popUpCard();
     });
   }
 
@@ -58,14 +60,14 @@ class Card {
   }
 
   // Metodo para Abrir Tarjeta
-  _popUpCard() {
-    popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
-    popFormAdd.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
-    popFormEdit.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
+  // _popUpCard() {
+  //   popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
+  //   popFormAdd.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
+  //   popFormEdit.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
 
-    popImage.setAttribute("src", this.link);
-    popText.textContent = this.title;
-  }
+  //   popImage.setAttribute("src", this.link);
+  //   popText.textContent = this.title;
+  // }
 
   _createCard() {
     this._element = this._generateTemplate();
