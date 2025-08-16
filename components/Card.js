@@ -1,12 +1,6 @@
 import { keyPush } from "../utils/utils.js";
 
 const cardTemplate = document.querySelector("#card__template");
-const popUp = document.querySelector(".popup");
-const popFormEdit = document.querySelector(".popup__form-edit");
-const popFormAdd = document.querySelector(".popup__form-add");
-
-const popImage = document.querySelector(".popup__image");
-const popText = document.querySelector(".popup__text");
 
 // Elemento
 class Card {
@@ -46,8 +40,6 @@ class Card {
     // Evento Abrir Ventana Imagen
     this.elementImage.addEventListener("click", () => {
       this.handleCardClick(this.title, this.link);
-      // document.addEventListener("keydown", keyPush); // Evento listener Escape
-      // this._popUpCard();
     });
   }
 
@@ -58,16 +50,6 @@ class Card {
   _deleteCard() {
     this.htmlCard.remove();
   }
-
-  // Metodo para Abrir Tarjeta
-  // _popUpCard() {
-  //   popUp.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible
-  //   popFormAdd.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
-  //   popFormEdit.classList.add("popup__hidden"); // Agrego la clase al popup__hidden para que sea no visible
-
-  //   popImage.setAttribute("src", this.link);
-  //   popText.textContent = this.title;
-  // }
 
   createCard() {
     this._element = this._generateTemplate();

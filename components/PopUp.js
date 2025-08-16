@@ -33,8 +33,6 @@ export default class PopUp {
         this.close();
       });
 
-    // this.popElement.querySelector;
-
     // Evento Cerrar la ventana dando click por fuera del popup
     this.popElement.addEventListener("click", (evt) => {
       this._handleClickOutside(evt);
@@ -42,8 +40,5 @@ export default class PopUp {
 
     // Evento Cerrar al dar "Esc"
     document.addEventListener("keydown", (evt) => this._handleEscClose(evt));
-
-    // console.log(this.popElement.querySelector(".popup__button_close"));
-    // console.log(this.popElement);
   }
 }
