@@ -52,28 +52,6 @@ const userProfile = new UserInfo({
   occupation: userProfileConfig.occupation,
 });
 
-// Agregando las Clases a utilizar
-// const nameDefault = document.querySelector(".main__paragraph_name");
-// const occupationDefault = document.querySelector(".main__paragraph_occupation");
-// const popFormEdit = document.querySelector(".popup__form-edit");
-// const popFormAdd = document.querySelector(".popup__form-add");
-// const popImages = document.querySelector(".popup__images");
-// const popHidden = document.querySelector(".popup__hidden");
-
-// Agregando los Botones a utilizar
-// const btnCloseWindow = popUp.querySelector(".popup__button_close");
-// const btnEditSave = popUp.querySelector(".popup__button_save");
-// const btnAddSave = document.querySelector(".popup__button_add");
-// const btnLike = document.querySelectorAll(".gallery__button_like");
-// const btnDelete = document.querySelector(".gallery__button_delete");
-// const btnCard = document.querySelector(".gallery__img");
-
-// Agregando los Inputs
-// const inName = document.querySelector(".popup__input_name");
-// const inOccupation = document.querySelector(".popup__input_occupation");
-// const inTitle = document.querySelector(".popup__input_title");
-// const inURL = document.querySelector(".popup__input_url");
-
 //Las 6 Tarjetas Iniciales
 const initialCards = [
   {
