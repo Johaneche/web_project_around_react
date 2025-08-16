@@ -6,26 +6,54 @@ import {
   editWindow,
   saveInfo,
 } from "../utils/utils.js";
+
 import Section from "./Section.js";
-import PopUp from "./PopUp.js";
 import PopupWithForm from "./PopupWithForm.js";
 import PopupWithImage from "./PopupWithImage.js";
+import UserInfo from "./UserInfo.js";
 
-// Crear las instancias de clases para los otros popup
-// 2 popwithForms (validacion)
-// 1 popupWithImag (image)
-
-const popupProfile = new PopupWithForm("#popupProfile");
-// console.log(popupProfile);
+const popupProfile = new PopupWithForm(
+  "#popupProfile",
+  ".popup__form-edit",
+  (data) => {
+    console.log(data);
+    userProfile.setUserInfo(data.name, data.occupation);
+  }
+);
 popupProfile.setEventListeners();
 
-const popupAddCard = new PopupWithForm("#popupAddCard");
-// console.log(popupAddCard);
+const popupAddCard = new PopupWithForm(
+  "#popupAddCard",
+  ".popup__form-add",
+  (data) => {
+    console.log(data);
+    // pasar los datos par agregar la carta
+    // title y link
+
+    const newCard = new Card(
+      data.title,
+      data.url,
+      ".card__container",
+      (title, link) => {
+        // openpopimg
+        popupOpenCard.open(title, link);
+      }
+    );
+
+    const cardElement = newCard.createCard();
+    galleryContainer.prepend(cardElement);
+  }
+);
+
 popupAddCard.setEventListeners();
 
 const popupOpenCard = new PopupWithImage("#popupOpenCard");
-// console.log(popupOpenCard);
 popupOpenCard.setEventListeners();
+
+const userProfile = new UserInfo({
+  name: ".main__paragraph_name",
+  occupation: ".main__paragraph_occupation",
+});
 
 // newPopUp.open();
 
@@ -96,49 +124,67 @@ const settings = {
 const formValidate = new FormValidator(settings);
 formValidate.enableValidation();
 
+// Cargando las cartas iniciales con el Section
+// const newSection = new Section({ initialCards });
+
 // Cargando cartas iniciales
-initialCards.forEach((item) => {
-  const newCard = new Card(
-    item.name,
-    item.link,
-    ".card__container",
-    (title, link) => {
-      // openpopimg
-      popupOpenCard.open(title, link);
-    }
-  );
-  const cardElement = newCard._createCard();
-  galleryContainer.append(cardElement);
-});
+// initialCards.forEach((item) => {
+//   const newCard = new Card(
+//     item.name,
+//     item.link,
+//     ".card__container",
+//     (title, link) => {
+//       // openpopimg
+//       popupOpenCard.open(title, link);
+//     }
+//   );
+
+//   const cardElement = newCard.createCard();
+//   galleryContainer.append(cardElement);
+// });
 
 // Eventos Listener para botones
 
-// btnCloseWindow.addEventListener("click", closeWindow);
-// btnCloseAddWindow.addEventListener("click", closeWindow);
-
 // btnEdit.addEventListener("click", editWindow);
 btnEdit.addEventListener("click", () => popupProfile.open());
-btnEditSave.addEventListener("click", saveInfo);
+// btnEditSave.addEventListener("click", saveInfo);
 
 // btnAdd.addEventListener("click", addWindow);
 btnAdd.addEventListener("click", () => popupAddCard.open());
 
-btnAddSave.addEventListener("click", addCard);
-// btnAddSave.addEventListener("click", () => popupOpenCard.open());
-
-//  Evento Cerrar PopUp al dar click por fuera
-popUp.addEventListener("click", function (evt) {
-  if (evt.target === popUp) {
-    closeWindow();
-  }
-});
+// Agregar Tarjeta
+// function addCard() {
+//   const newCard = new Card(inTitle.value, inURL.value);
+//   const cardElement = newCard._createCard();
+//   galleryContainer.prepend(cardElement);
+//   closeWindow();
+// }
 
 // Agregar Tarjeta
-function addCard() {
-  const newCard = new Card(inTitle.value, inURL.value);
-  const cardElement = newCard._createCard();
-  galleryContainer.prepend(cardElement);
-  closeWindow();
+function addCard(cardData) {
+  const newCard = new Card(
+    cardData.name,
+    cardData.link,
+    ".card__container",
+    () => {
+      // title, link
+      // openpopimg
+      popupOpenCard.open(title, link);
+    }
+  );
+  return newCard.createCard();
 }
+
+const cardSection = new Section(
+  {
+    item: initialCards,
+    renderer: (item) => {
+      cardSection.addItem(addCard(item));
+    },
+  },
+  ".gallery"
+);
+
+cardSection.renderer();
 
 export { settings };

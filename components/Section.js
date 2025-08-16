@@ -1,3 +1,6 @@
+// Debe encargarse de agregar las cartas al HTML, ya sean las 6 iniciales o
+// cualquier otra carta que agrege el usuario
+
 export default class Section {
   constructor({ item, renderer }, containerSelector) {
     this._renderedItems = item;

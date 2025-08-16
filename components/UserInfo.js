@@ -1,18 +1,21 @@
 export default class UserInfo {
-  constructor({ userName, userOccupation }) {
-    //Llevar al constructor un objeto con los selectores de dos elementos:
-    // uno que contiene el nombre del usuario, y otro que contiene el
-    // trabajo del usuario.
+  constructor({ name, occupation }) {
+    this.nameElement = document.querySelector(name);
+    this.occupationElement = document.querySelector(occupation);
+    // console.log(this.nameElement);
   }
 
   getUserInfo() {
-    // Almacenar un método público llamado getUserInfo(), que devuelve un
-    // objeto con información sobre el usuario. Este método será útil
-    // para casos en los que es
+    return {
+      name: this.nameElement.textContent,
+      occupation: this.occupationElement.textContent,
+    };
   }
 
-  setUserInfo() {
+  setUserInfo(name, occupation) {
     // Almacena un método público llamado setUserInfo(), que toma los datos
     // del nuevo usuario y los agrega en la página.
+    this.nameElement.textContent = name;
+    this.occupationElement.textContent = occupation;
   }
 }

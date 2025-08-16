@@ -69,7 +69,7 @@ class Card {
   //   popText.textContent = this.title;
   // }
 
-  _createCard() {
+  createCard() {
     this._element = this._generateTemplate();
     return this._element;
   }

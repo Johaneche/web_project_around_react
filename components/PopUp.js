@@ -1,39 +1,49 @@
 export default class PopUp {
   constructor(popupSelector) {
-    // El constructor tiene un solo parámetro, que es el selector popup.
-    this._popupSelector = document.querySelector(popupSelector);
+    this.popElement = document.querySelector(popupSelector);
   }
 
   open() {
-    // Almacena los métodos públicos open() y close() que abrirán y cerrarán el popup.
-    this._popupSelector.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible.
-    // this.close();
+    this.popElement.classList.add("popup__opened"); // Agrego la clase al popup para que sea visible.
   }
 
   close() {
-    // Almacena los métodos públicos open() y close() que abrirán y cerrarán el popup.
-    this._popupSelector.classList.remove("popup__opened"); // Elimino la clase al popup para que NO sea visible
+    this.popElement.classList.remove("popup__opened"); // Elimino la clase al popup para que NO sea visible
+  }
+
+  _handleClickOutside(evt) {
+    // Cerrar al dar click por fuera del Popup
+    if (evt.target === this.popElement) {
+      this.close();
+    }
+  }
+
+  _handleEscClose(evt) {
+    // Cerrar Popup al presionar "Esc"
+    if (evt.key === "Escape") {
+      this.close();
+    }
   }
 
   setEventListeners() {
-    // Agrega un detector de eventos de click al icono para cerrar el popup. La ventana
-    // modal también debe cerrarse cuando los usuarios hacen clic en el área sombreada
-    // del formulario.
-
-    this._popupSelector
+    // Evento para cerrar la ventana
+    this.popElement
       .querySelector(".popup__button_close")
       .addEventListener("click", () => {
         this.close();
       });
 
-    console.log(this._popupSelector.querySelector(".popup__button_close"));
-    console.log(this._popupSelector);
+    // this.popElement.querySelector;
 
-    // this._popupSelector.addEventListener("click", () => {
-    //   this.close();
-    // });
+    // Evento Cerrar la ventana dando click por fuera del popup
+    this.popElement.addEventListener("click", (evt) => {
+      this._handleClickOutside(evt);
+    });
 
-    // Evento para cerrar el Popup dando click por fuera
-    // Presionando "Esc"
+    // Evento Cerrar al dar "Esc"
+    document.addEventListener("keydown", (evt) => this._handleEscClose(evt));
+
+    // console.log(this.popElement.querySelector(".popup__button_close"));
+    // console.log(this.popElement);
   }
 }
