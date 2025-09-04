@@ -157,6 +157,49 @@
       </div>
     </div>
 
+    <!-- Ventana Modal: Eliminar Tarjeta -->
+    <div class="popup" id="popupWithConfirmation">
+      <div class="popup__container">
+        <button class="popup__button popup__button_close">×</button>
+
+        <!-- Confirmacion: Eliminar Tarjeta -->
+        <div class="popup__confirmation" id="popupConfirmation">
+          <form class="popup__form-confirmation">
+            <h2 class="popup__confirmation-title">¿Estas Seguro/a?</h2>
+            <button type="submit" class="popup__button popup__button_yes">
+              Sí
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ventana Modal: Cambiar Foto Perfil -->
+    <div class="popup" id="popupAvatar">
+      <div class="popup__container">
+        <button class="popup__button popup__button_close">×</button>
+
+        <!-- Formulario: Cambiar Foto Perfil -->
+        <form class="popup__form popup__form-avatar" id="formAvatar">
+          <h2 class="popup__title">Cambiar foto de Perfil</h2>
+          <fieldset class="popup__form-content">
+            <input
+              id="linkAvatar"
+              name="linkAvatar"
+              class="popup__input popup__input_link"
+              type="url"
+              placeholder="Link de la imagen"
+              required
+            />
+            <span class="popup__link-error" id="linkAvatar-error"></span>
+          </fieldset>
+          <button type="submit" class="popup__button popup__button_change">
+            Guardar
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!-- Template Tarjetas-->
     <template id="card__template">
       <div class="card__container">
@@ -177,6 +220,7 @@
 
     <!-- Enlazamos el JS al HTML -->
     <script type="module" src="./components/index.js"></script>
+    <script src="./components/Api.js"></script>
     <!-- <script type="module" src="./scripts/validate.js"></script> -->
     <!-- <script type="module" src="./scripts/Card.js"></script> -->
   </body>

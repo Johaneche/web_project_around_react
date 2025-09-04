@@ -1,7 +1,7 @@
 // Agregando las Clases a utilizar
 export const popUp = document.querySelector(".popup");
 export const nameDefault = document.querySelector(".main__paragraph_name");
-export const galleryContainer = document.querySelector(".gallery");
+// export const galleryContainer = document.querySelector(".gallery");
 export const occupationDefault = document.querySelector(
   ".main__paragraph_occupation"
 );
@@ -9,6 +9,7 @@ export const occupationDefault = document.querySelector(
 // Agregando los Botones a utilizar
 export const btnEdit = document.querySelector(".main__button_edit");
 export const btnAdd = document.querySelector(".main__button_add");
+export const changeAvatar = document.querySelector(".main__img-profile");
 
 // Agregando los Inputs
 export const inName = document.querySelector(".popup__input_name");

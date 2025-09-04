@@ -1,20 +1,21 @@
-import { keyPush } from "../utils/utils.js";
-
 const cardTemplate = document.querySelector("#card__template");
 
 // Elemento
 class Card {
-  constructor(title, link, selector, handleCardClick) {
-    this.title = title;
-    this.link = link;
+  constructor(data, selector, handleCardClick, handleOpenConfirmation) {
+    this.title = data.name;
+    this.link = data.link;
+    this._id = data._id;
     this.selector = selector || ".card__container";
     this.handleCardClick = handleCardClick;
+    this.handleOpenConfirmation = handleOpenConfirmation;
   }
 
   _generateTemplate() {
     this.htmlCard = cardTemplate
       .cloneNode(true)
       .content.querySelector(this.selector);
+    // console.log("cardId", this._id);
     this.elementImage = this.htmlCard.querySelector(".card__img");
     this.elementImage.src = this.link;
     this.elementText = this.htmlCard
@@ -48,6 +49,12 @@ class Card {
   }
 
   _deleteCard() {
+    // this.htmlCard.remove();
+    // console.log(this);
+    this.handleOpenConfirmation(this._id);
+  }
+
+  removeCardHtml() {
     this.htmlCard.remove();
   }
 

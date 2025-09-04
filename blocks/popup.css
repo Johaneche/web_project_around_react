@@ -182,6 +182,72 @@ span {
   line-height: 100%;
 }
 
+.popup__confirmation {
+  color: #000;
+  font-family: "Inter-Regular", sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.popup__button_yes {
+  width: 80%;
+  height: 50px;
+  top: 365px;
+  left: 461px;
+  opacity: 1;
+  border-radius: 2px;
+  margin: auto;
+
+  cursor: pointer;
+  height: 50px;
+
+  background: #000000;
+  border-radius: 5px;
+
+  color: #fff;
+  font-family: "Inter-Regular", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  text-align: center;
+}
+
+.popup__button_change {
+  cursor: pointer;
+  height: 50px;
+
+  background: #000000;
+  border-radius: 5px;
+
+  color: #fff;
+  font-family: "Inter-Regular", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  text-align: center;
+}
+
+.popup__button_change:hover {
+  opacity: 80%;
+}
+
+.popup__button_change:disabled {
+  opacity: 20%;
+  border: 1px solid #000000;
+  cursor: not-allowed;
+}
+
+.popup__form-confirmation {
+  margin: auto;
+}
+
 @media screen and (max-width: 605px) {
   .popup__container {
     max-width: 280px;
@@ -191,5 +257,10 @@ span {
   }
   .popup__button_add {
     font-size: 14px;
+  }
+
+  .popup__confirmation {
+    font-size: 14px;
+    height: 120px;
   }
 }

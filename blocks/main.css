@@ -13,6 +13,11 @@
   border-radius: 50%;
 }
 
+.main__img-profile:hover {
+  opacity: 40%;
+  cursor: url("../images/edit-profile.svg") 1 1, auto;
+}
+
 .main__content-paragraph {
   margin-left: 30px;
   margin-right: 165px;

@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor({ name, occupation }) {
+  constructor({ name, occupation, avatar }) {
     this.nameElement = document.querySelector(name);
     this.occupationElement = document.querySelector(occupation);
+    this.avatarElement = document.querySelector(avatar);
   }
 
   getUserInfo() {
@@ -16,5 +17,9 @@ export default class UserInfo {
     // del nuevo usuario y los agrega en la página.
     this.nameElement.textContent = name;
     this.occupationElement.textContent = occupation;
+  }
+
+  changeAvatar(data) {
+    this.avatarElement.src = data;
   }
 }
