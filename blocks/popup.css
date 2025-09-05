@@ -113,7 +113,7 @@ span {
 }
 
 .popup__input_name-error,
-.popup__input_occupation-error,
+.popup__input_about-error,
 .popup__input_url-error,
 .popup__input_title-error {
   color: red;

@@ -1,22 +1,22 @@
 export default class UserInfo {
-  constructor({ name, occupation, avatar }) {
+  constructor({ name, about, avatar }) {
     this.nameElement = document.querySelector(name);
-    this.occupationElement = document.querySelector(occupation);
+    this.aboutElement = document.querySelector(about);
     this.avatarElement = document.querySelector(avatar);
   }
 
   getUserInfo() {
     return {
       name: this.nameElement.textContent,
-      occupation: this.occupationElement.textContent,
+      about: this.aboutElement.textContent,
     };
   }
 
-  setUserInfo(name, occupation) {
+  setUserInfo(name, about) {
     // Almacena un método público llamado setUserInfo(), que toma los datos
     // del nuevo usuario y los agrega en la página.
     this.nameElement.textContent = name;
-    this.occupationElement.textContent = occupation;
+    this.aboutElement.textContent = about;
   }
 
   changeAvatar(data) {

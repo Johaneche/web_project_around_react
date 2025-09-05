@@ -15,7 +15,6 @@ class Card {
     this.htmlCard = cardTemplate
       .cloneNode(true)
       .content.querySelector(this.selector);
-    // console.log("cardId", this._id);
     this.elementImage = this.htmlCard.querySelector(".card__img");
     this.elementImage.src = this.link;
     this.elementText = this.htmlCard
@@ -49,8 +48,6 @@ class Card {
   }
 
   _deleteCard() {
-    // this.htmlCard.remove();
-    // console.log(this);
     this.handleOpenConfirmation(this._id);
   }
 

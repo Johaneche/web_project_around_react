@@ -8,7 +8,7 @@ class Api {
   getUser() {
     return (
       //Esta es la peticion
-      fetch(`${this.baseUrl}/users/me/avatar`, {
+      fetch(`${this.baseUrl}/users/me`, {
         method: "GET",
         headers: this.headers,
       })
@@ -106,8 +106,6 @@ class Api {
       })
     );
   }
-
-  // otros métodos para trabajar con la API
 }
 
 const api = new Api({

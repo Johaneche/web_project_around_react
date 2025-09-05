@@ -48,9 +48,7 @@
                 alt="Cargar la imagen del boton editar"
               />
             </button>
-            <h2 class="main__paragraph main__paragraph_occupation">
-              Explorador
-            </h2>
+            <h2 class="main__paragraph main__paragraph_about">Explorador</h2>
           </div>
           <button class="main__button main__button_add">+</button>
         </section>
@@ -86,16 +84,16 @@
           <span class="popup__name-error" id="name-error"></span>
 
           <input
-            id="occupation"
-            name="occupation"
-            class="popup__input popup__input_occupation"
+            id="about"
+            name="about"
+            class="popup__input popup__input_about"
             type="text"
             placeholder="Ocupacion"
             minlength="2"
             maxlength="200"
             required
           />
-          <span class="popup__occupation-error" id="occupation-error"></span>
+          <span class="popup__about-error" id="about-error"></span>
           <button class="popup__button popup__button_save">Guardar</button>
         </form>
       </div>
@@ -221,7 +219,5 @@
     <!-- Enlazamos el JS al HTML -->
     <script type="module" src="./components/index.js"></script>
     <script src="./components/Api.js"></script>
-    <!-- <script type="module" src="./scripts/validate.js"></script> -->
-    <!-- <script type="module" src="./scripts/Card.js"></script> -->
   </body>
 </html>
