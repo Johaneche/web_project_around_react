@@ -248,6 +248,12 @@ span {
   margin: auto;
 }
 
+.popup__button_yes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 605px) {
   .popup__container {
     max-width: 280px;

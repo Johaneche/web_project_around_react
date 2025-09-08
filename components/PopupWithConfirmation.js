@@ -10,7 +10,6 @@ export default class PopupWithConfirmation extends PopUp {
   open(cardId, action) {
     this.handleSubmit = action;
     this.cardId = cardId;
-    // this._link.src = link;
     super.open(); // Seguir ejecutando metodo open del padre
   }
 
@@ -20,7 +19,6 @@ export default class PopupWithConfirmation extends PopUp {
     this.formElement = this._popupSelector.querySelector("form");
     this.formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      // console.log("Entro al submit");
       this.handleSubmit(this.cardId); //Estoy pasando a handleSubmit un objeto que obtengo de getInputValue
       super.close();
     });

@@ -17,7 +17,6 @@ const userProfileConfig = {
   avatar: ".main__img-profile",
 };
 
-/////////////////////////////////////////
 const userProfile = new UserInfo({
   name: userProfileConfig.name,
   about: userProfileConfig.about,
@@ -95,6 +94,12 @@ api.getInitialCards().then(function (initialCards) {
                 newCard.removeCardHtml();
                 popupDeleteConfirmation.close();
               });
+            });
+          },
+          (cardId, isLiked) => {
+            console.log(cardId);
+            api.changeStatusLikeCard(cardId, isLiked).then(() => {
+              newCard._likeCard();
             });
           }
         );

@@ -4,7 +4,7 @@ class Api {
     this.headers = options.headers;
   }
 
-  // metodo getUser
+  // Metodo para obtener la informacion del usuario
   getUser() {
     return (
       //Esta es la peticion
@@ -58,7 +58,7 @@ class Api {
     );
   }
 
-  // metodo get initial cards
+  // Metodo para obtener las tarjetas iniciales
   getInitialCards() {
     return (
       //Esta es la peticion
@@ -75,6 +75,7 @@ class Api {
     );
   }
 
+  // Método para agregar una nueva tarjeta
   createCard(name, link) {
     return (
       //Esta es la peticion
@@ -97,6 +98,45 @@ class Api {
     return (
       //Esta es la peticion
       fetch(`${this.baseUrl}/cards/${cardId}`, {
+        method: "DELETE",
+        headers: this.headers,
+      }).then((result) => {
+        if (result.ok) {
+          return result.json();
+        }
+      })
+    );
+  }
+
+  // Metodo para conocer el estado del Like de la carta
+  changeStatusLikeCard(cardId, isLiked) {
+    if (isLiked) {
+      return this.dislikeCard(cardId);
+    } else {
+      return this.likeCard(cardId);
+    }
+  }
+
+  // Metodo de me gusta
+  likeCard(cardId) {
+    return (
+      //Esta es la peticion
+      fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
+        method: "PUT",
+        headers: this.headers,
+      }).then((result) => {
+        if (result.ok) {
+          return result.json();
+        }
+      })
+    );
+  }
+
+  // Metodo de elimiar el Me gusta
+  dislikeCard(cardId) {
+    return (
+      //Esta es la peticion
+      fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
         method: "DELETE",
         headers: this.headers,
       }).then((result) => {
