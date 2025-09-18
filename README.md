@@ -1,39 +1,12 @@
-# Alrededor de los EE.UU.
+# React + Vite
 
-## Funcionalidad:
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Es una página web
+Currently, two official plugins are available:
 
-En este proyecto empezamos a utilizar lo siguiente:
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- Metodologia BEM
-- Consultas de Medios (Media Query)
-- Java Script
-- Git
-- Formularios
-- Validación de formularios
-- Programacion Orientada a Objetos en JS (POO)
-- Sprint 10: Refactorización del codigo para uso de Clases.
-  - Creación de las clases Card y FormValidator
-- Sprint 11: Refactorizando codigo y agregando mas clases:
-  - Section:
-  - Popup: Abre y cierra la ventana emergente
-  - PopupWithImage: Clase hija de Popup y cambia metodo open
-  - PopupWithForm: Clase hija de Popup
-    - Metodos privados: \_getInputValues, \_setEventListeners
-  - UserInfo: Responsable de presentar información sobre el usuario en la página
-  - Card: Cuando el usuario haga clic en la tarjeta, esta función abrirá el popup con una imagen
+## Expanding the ESLint configuration
 
-Adicionalmente empezamos a trabajaron con arrays y bucles para hacer que el contenido se muestre en una página automáticamente. Se crea un template para solucionar la vulnerabilidad de la página. Se clona, agrega, elimina y reemplaza elementos de la página a través de JavaScript.
-
-## Span Mensaje de Error
-
-El span del mensaje de error debe tener el id del input seguido por el -error
-
-## Enlace a GitHub Pages
-
--https://github.com/Johaneche/web_project_around
-
-## Contacto
-
-[Johan Echeverry] - [johan.manuel.echeverry@gmail.com]
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
