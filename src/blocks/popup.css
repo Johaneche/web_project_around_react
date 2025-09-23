@@ -3,6 +3,8 @@
 }
 
 .popup__opened {
+  backdrop-filter: blur(5px);
+
   display: flex;
   position: fixed;
   top: 0;
@@ -42,9 +44,9 @@
   max-height: 40px;
 }
 
-.popup__button_close:hover {
+/* .popup__button_close:hover {
   opacity: 80%;
-}
+} */
 
 .popup__form {
   padding: 34px 36px;
@@ -96,12 +98,12 @@
   text-align: center;
 }
 
-.popup__button_save:hover {
+/* .popup__button_save:hover {
   opacity: 80%;
-}
+} */
 
 .popup__button_save:disabled {
-  opacity: 20%;
+  /* opacity: 20%; */
   border: 1px solid #000000;
   cursor: not-allowed;
 }
@@ -142,12 +144,12 @@ span {
   text-align: center;
 }
 
-.popup__button_add:hover {
+/* .popup__button_add:hover {
   opacity: 80%;
-}
+} */
 
 .popup__button_add:disabled {
-  opacity: 20%;
+  /* opacity: 20%; */
   border: 1px solid #000000;
   cursor: not-allowed;
 }
@@ -201,7 +203,7 @@ span {
   height: 50px;
   top: 365px;
   left: 461px;
-  opacity: 1;
+  /* opacity: 1; */
   border-radius: 2px;
   margin: auto;
 
@@ -234,12 +236,12 @@ span {
   text-align: center;
 }
 
-.popup__button_change:hover {
+/* .popup__button_change:hover {
   opacity: 80%;
-}
+} */
 
 .popup__button_change:disabled {
-  opacity: 20%;
+  /* opacity: 20%; */
   border: 1px solid #000000;
   cursor: not-allowed;
 }
