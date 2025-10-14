@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import avatarImg from "../../images/img-main-profile.png";
 import editButton from "../../images/edit-button.svg";
@@ -8,41 +8,113 @@ import EditAvatar from "./components/Popup/EditAvatar/EditAvatar.jsx";
 import EditProfile from "./components/Popup/EditProfile/EditProfile.jsx";
 import NewCard from "./components/Popup/NewCard/NewCard.jsx";
 import ImagePopup from "./components/Popup/ImagePopup/ImagePopup.jsx";
+import api from "../../utils/api.js";
 
-const cards = [
-  {
-    isLiked: false,
-    _id: "5d1f0611d321eb4bdcd707dd",
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
-    owner: "5d1f0611d321eb4bdcd707dd",
-    createdAt: "2019-07-05T08:10:57.741Z",
-  },
-  {
-    isLiked: false,
-    _id: "5d1f064ed321eb4bdcd707de",
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
-    owner: "5d1f0611d321eb4bdcd707dd",
-    createdAt: "2019-07-05T08:11:58.324Z",
-  },
-];
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext.js";
+import DeleteCardConfirmation from "./components/Popup/DeleteCard/DeleteCardConfirmation.jsx";
 
-console.log(cards);
+// const cards = [
+//   {
+//     isLiked: false,
+//     _id: "5d1f0611d321eb4bdcd707dd",
+//     name: "Yosemite Valley",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
+//     owner: "5d1f0611d321eb4bdcd707dd",
+//     createdAt: "2019-07-05T08:10:57.741Z",
+//   },
+//   {
+//     isLiked: false,
+//     _id: "5d1f064ed321eb4bdcd707de",
+//     name: "Lake Louise",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
+//     owner: "5d1f0611d321eb4bdcd707dd",
+//     createdAt: "2019-07-05T08:11:58.324Z",
+//   },
+// ];
 
-function Main() {
-  const [popup, setPopup] = useState(null);
+// console.log(cards);
 
-  const newEditAvatar = { title: "Editar Avatar", children: <EditAvatar /> };
-  const newEditProfile = { title: "Editar Perfil", children: <EditProfile /> };
-  const newCardPopup = { title: "Nuevo lugar", children: <NewCard /> };
+function Main({ popup, handleClosePopup, handleOpenPopup }) {
+  const { currentUser, cards, setCards } = useContext(CurrentUserContext);
 
-  function handleOpenPopup(popup) {
-    setPopup(popup);
+  // Vamos a elevar este estado
+  // const [cards, setCards] = useState([]); //Array vacio como valor inicial
+
+  // console.log("Card:", cards);
+
+  const newEditAvatar = {
+    title: "Editar Avatar",
+    children: <EditAvatar handleChangeAvatar={handleChangeAvatar} />,
+  };
+  const newEditProfile = {
+    title: "Editar Perfil",
+    children: <EditProfile />,
+  };
+  const newCardPopup = {
+    title: "Nuevo lugar",
+    children: <NewCard />,
+  };
+
+  const deleteCardConfirmation = {
+    title: "Eliminar Tarjeta",
+    children: <DeleteCardConfirmation handleCardDelete={handleCardDelete} />,
+  };
+
+  // Creando el useEfect
+  useEffect(() => {
+    // Esta función se ejecuta cuando el componente se monta
+    api
+      .getInitialCards()
+      .then((cardData) => {
+        setCards(cardData); // Actualiza el estado con las tarjetas de la API
+      })
+      .catch((error) => {
+        console.error("Error al obtener las tarjetas:", error);
+      });
+  }, []); // Array vacío = solo se ejecuta al montar el componente
+
+  function handleLikeClick(newCard) {
+    // Comprobar el like de cada tarjeta
+    console.log("Like en tarjeta:", this.card._id);
+
+    // Arreglo de nuevas tarjetas con like
+    const newArray = cards.map((card) => {
+      if (card._id === newCard._id) {
+        card = newCard;
+      }
+      return card;
+    });
+
+    setCards(newArray);
   }
-  // Cerrar Popup
-  function handleClosePopup() {
-    setPopup(null);
+
+  // Aun no esta lista la funcion delete
+  function handleCardDelete(id) {
+    // setCards(nuevoObj);
+    console.log("Handle Card Delete");
+
+    // Arreglo de nuevas tarjetas con algunas eliminadas
+    const updatedCards = cards.filter((currentCard) => {
+      return currentCard._id !== id;
+    });
+
+    setCards(updatedCards);
+  }
+
+  function handleChangeAvatar(linkAvatar) {
+    console.log("Estoy cambiando el Avatar", linkAvatar);
+    // handleClosePopup();
+    api
+      .avatarEdit(linkAvatar)
+      .then(() => {
+        // setCards(); // Actualiza el estado con las tarjetas de la API
+        console.log(linkAvatar);
+      })
+      .catch((error) => {
+        console.error("Error al actualizar el avatar:", error);
+      });
+    handleClosePopup();
   }
 
   return (
@@ -50,7 +122,7 @@ function Main() {
       <section className="main">
         <img
           className="main__img-profile"
-          src={avatarImg}
+          src={currentUser.avatar}
           alt="Cargar la imagen del perfil"
           onClick={() => {
             handleOpenPopup(newEditAvatar);
@@ -59,7 +131,7 @@ function Main() {
 
         <div className="main__content-paragraph">
           <h1 className="main__paragraph main__paragraph_name">
-            Johan Echeverry
+            {currentUser.name}
           </h1>
           <button
             className="main__button main__button_edit"
@@ -71,7 +143,9 @@ function Main() {
               alt="Cargar la imagen del boton editar"
             />
           </button>
-          <h2 className="main__paragraph main__paragraph_about">Explorador</h2>
+          <h2 className="main__paragraph main__paragraph_about">
+            {currentUser.about}
+          </h2>
         </div>
         <button
           aria-label="Add card"
@@ -89,6 +163,9 @@ function Main() {
             key={card._id}
             card={card}
             onHandleOpenPopup={handleOpenPopup}
+            onHandleLikeClick={handleLikeClick}
+            // handleCardDelete={handleCardDelete}
+            handleCardDelete={() => handleOpenPopup(deleteCardConfirmation)}
           />
         ))}
       </section>

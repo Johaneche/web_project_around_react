@@ -1,6 +1,21 @@
-function EditAvatar() {
+//
+
+function EditAvatar(props) {
+  //
+
+  //Evita Comportamiento Predeterminado
+  function handleSubmit(event) {
+    event.preventDefault();
+    // console.log(linkAvatar.value);
+    props.handleChangeAvatar(linkAvatar.value);
+  }
+
   return (
-    <form className="popup__form popup__form-avatar" id="formAvatar">
+    <form
+      className="popup__form popup__form-avatar"
+      id="formAvatar"
+      onSubmit={handleSubmit}
+    >
       <h2 className="popup__title">Cambiar foto de Perfil</h2>
       <fieldset className="popup__form-content">
         <input

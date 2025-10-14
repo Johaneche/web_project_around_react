@@ -1,10 +1,27 @@
-function NewCard() {
+import { useContext } from "react";
+import CurrentUserContext from "../../../../../contexts/CurrentUserContext";
+
+//
+function NewCard(props) {
+  const { handleAddCard } = useContext(CurrentUserContext);
+
+  //Evita Comportamiento Predeterminado
+  function handleSubmit(event) {
+    event.preventDefault();
+    handleAddCard(
+      event.target.elements.title.value,
+      event.target.elements.url.value
+    );
+    // console.log(event.target.elements);
+  }
+
   return (
     <form
       className="popup__form popup__form-add"
       name="card-form"
       id="new-card-form"
       noValidate
+      onSubmit={handleSubmit}
     >
       <h2 className="popup__title">Nuevo Lugar</h2>
 
