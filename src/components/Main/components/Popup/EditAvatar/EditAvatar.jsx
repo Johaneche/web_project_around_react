@@ -1,13 +1,17 @@
 //
 
-function EditAvatar(props) {
+import { useContext } from "react";
+import CurrentUserContext from "../../../../../contexts/CurrentUserContext";
+
+function EditAvatar() {
   //
+  const { handleChangeAvatar } = useContext(CurrentUserContext); // Obtiene el objeto currentUser
 
   //Evita Comportamiento Predeterminado
   function handleSubmit(event) {
     event.preventDefault();
     // console.log(linkAvatar.value);
-    props.handleChangeAvatar(linkAvatar.value);
+    handleChangeAvatar(linkAvatar.value);
   }
 
   return (

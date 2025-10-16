@@ -2,12 +2,17 @@ import { useContext } from "react";
 import ImagePopup from "../Popup/ImagePopup/ImagePopup";
 import CurrentUserContext from "../../../../contexts/CurrentUserContext";
 import api from "../../../../utils/api";
+import DeleteCardConfirmation from "../Popup/DeleteCard/DeleteCardConfirmation";
 
 function Card(props) {
   const { name, link, isLiked, _id } = props.card;
   const { currentUser } = useContext(CurrentUserContext);
 
   const newImagePopup = { children: <ImagePopup name={name} link={link} /> };
+  const deleteCardConfirmation = {
+    title: "Eliminar Tarjeta",
+    children: <DeleteCardConfirmation cardId={_id} />,
+  };
 
   function handleClick() {
     props.onHandleOpenPopup(newImagePopup);
@@ -30,19 +35,6 @@ function Card(props) {
       });
   }
 
-  function deleteCard() {
-    console.log("presione el boton de eliminar tarjeta");
-    api
-      .deleteCard(_id)
-      .then(() => {
-        // console.log(newCard);
-        props.handleCardDelete(_id);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
   return (
     <div className="card__container">
       <img
@@ -56,7 +48,7 @@ function Card(props) {
         aria-label="Delete card"
         type="button"
         className="card__button card__button_delete"
-        onClick={deleteCard}
+        onClick={(evt) => props.onHandleOpenPopup(deleteCardConfirmation)}
       ></button>
 
       <div className="card__content">

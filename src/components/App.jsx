@@ -54,9 +54,43 @@ function App() {
       });
   }
 
+  // Actualizando el Imagen del Avatar
+  function handleChangeAvatar(linkAvatar) {
+    console.log("Estoy cambiando el Avatar", linkAvatar);
+    api
+      .avatarEdit(linkAvatar)
+      .then((res) => {
+        console.log(linkAvatar);
+        // Actualiza el estado del avatar con setCurrentUser
+        setCurrentUser(res);
+      })
+      .catch((error) => {
+        console.error("Error al actualizar el avatar:", error);
+      });
+    handleClosePopup();
+  }
+
+  // Eliminar Tarjerta
+  function handleCardDelete(id) {
+    // Arreglo de nuevas tarjetas con algunas eliminadas
+    const updatedCards = cards.filter((currentCard) => {
+      return currentCard._id !== id;
+    });
+    api
+      .deleteCard(id)
+      .then(() => {
+        setCards(updatedCards);
+      })
+      .catch((error) => {
+        console.error("Error al actualizar el avatar:", error);
+      });
+    handleClosePopup();
+  }
+
   // Abrir Popup
   function handleOpenPopup(popup) {
     setPopup(popup);
+    console.log("Open popup");
   }
   // Cerrar Popup
   function handleClosePopup() {
@@ -72,6 +106,8 @@ function App() {
           handleAddCard,
           cards,
           setCards,
+          handleChangeAvatar,
+          handleCardDelete,
         }}
       >
         <div className="page__content">
@@ -80,6 +116,7 @@ function App() {
             popup={popup}
             handleClosePopup={handleClosePopup}
             handleOpenPopup={handleOpenPopup}
+            handleChangeAvatar={handleChangeAvatar}
           />
           <Footer />
         </div>

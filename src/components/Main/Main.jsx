@@ -12,7 +12,6 @@ import api from "../../utils/api.js";
 
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
-import DeleteCardConfirmation from "./components/Popup/DeleteCard/DeleteCardConfirmation.jsx";
 
 // const cards = [
 //   {
@@ -38,14 +37,9 @@ import DeleteCardConfirmation from "./components/Popup/DeleteCard/DeleteCardConf
 function Main({ popup, handleClosePopup, handleOpenPopup }) {
   const { currentUser, cards, setCards } = useContext(CurrentUserContext);
 
-  // Vamos a elevar este estado
-  // const [cards, setCards] = useState([]); //Array vacio como valor inicial
-
-  // console.log("Card:", cards);
-
   const newEditAvatar = {
     title: "Editar Avatar",
-    children: <EditAvatar handleChangeAvatar={handleChangeAvatar} />,
+    children: <EditAvatar />,
   };
   const newEditProfile = {
     title: "Editar Perfil",
@@ -54,11 +48,6 @@ function Main({ popup, handleClosePopup, handleOpenPopup }) {
   const newCardPopup = {
     title: "Nuevo lugar",
     children: <NewCard />,
-  };
-
-  const deleteCardConfirmation = {
-    title: "Eliminar Tarjeta",
-    children: <DeleteCardConfirmation handleCardDelete={handleCardDelete} />,
   };
 
   // Creando el useEfect
@@ -75,9 +64,6 @@ function Main({ popup, handleClosePopup, handleOpenPopup }) {
   }, []); // Array vacío = solo se ejecuta al montar el componente
 
   function handleLikeClick(newCard) {
-    // Comprobar el like de cada tarjeta
-    console.log("Like en tarjeta:", this.card._id);
-
     // Arreglo de nuevas tarjetas con like
     const newArray = cards.map((card) => {
       if (card._id === newCard._id) {
@@ -87,34 +73,6 @@ function Main({ popup, handleClosePopup, handleOpenPopup }) {
     });
 
     setCards(newArray);
-  }
-
-  // Aun no esta lista la funcion delete
-  function handleCardDelete(id) {
-    // setCards(nuevoObj);
-    console.log("Handle Card Delete");
-
-    // Arreglo de nuevas tarjetas con algunas eliminadas
-    const updatedCards = cards.filter((currentCard) => {
-      return currentCard._id !== id;
-    });
-
-    setCards(updatedCards);
-  }
-
-  function handleChangeAvatar(linkAvatar) {
-    console.log("Estoy cambiando el Avatar", linkAvatar);
-    // handleClosePopup();
-    api
-      .avatarEdit(linkAvatar)
-      .then(() => {
-        // setCards(); // Actualiza el estado con las tarjetas de la API
-        console.log(linkAvatar);
-      })
-      .catch((error) => {
-        console.error("Error al actualizar el avatar:", error);
-      });
-    handleClosePopup();
   }
 
   return (
@@ -165,7 +123,6 @@ function Main({ popup, handleClosePopup, handleOpenPopup }) {
             onHandleOpenPopup={handleOpenPopup}
             onHandleLikeClick={handleLikeClick}
             // handleCardDelete={handleCardDelete}
-            handleCardDelete={() => handleOpenPopup(deleteCardConfirmation)}
           />
         ))}
       </section>

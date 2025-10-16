@@ -20,7 +20,7 @@ function NewCard(props) {
       className="popup__form popup__form-add"
       name="card-form"
       id="new-card-form"
-      noValidate
+      // noValidate
       onSubmit={handleSubmit}
     >
       <h2 className="popup__title">Nuevo Lugar</h2>

@@ -1,10 +1,14 @@
-export function DeleteCardConfirmation({ handleCardDelete }) {
-  //Evita Comportamiento Predeterminado
-  function handleSubmit(event) {
-    event.preventDefault();
-    handleCardDelete(event.target.elements.id);
+import { useContext } from "react";
+import CurrentUserContext from "../../../../../contexts/CurrentUserContext";
 
-    console.log(event.target.elements.id.value);
+function DeleteCardConfirmation({ cardId }) {
+  const { handleCardDelete } = useContext(CurrentUserContext);
+
+  function handleSubmit(event) {
+    //Evita Comportamiento Predeterminado
+    event.preventDefault();
+    console.log(cardId);
+    handleCardDelete(cardId);
   }
 
   return (
